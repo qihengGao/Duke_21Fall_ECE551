@@ -1,0 +1,21 @@
+a
+a b
+aaaaa aaaaa b
+aaaaaa aaaaaa
+aaaaa aaaaa
+11111 111111
+a1b2c a1b2c
+!!!!? !!!!?
+123
+abcde aBcDe
+!!!!! 11111
+abcdef
+a00b0 ?????
+12345 54321
+aaaaaa aaaaa
+abcd
+a a a
+01123 01122
+00000 00001
+000000 100000
+11111 1
