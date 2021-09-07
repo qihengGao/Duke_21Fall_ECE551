@@ -1,0 +1,12 @@
+Grading at 09/07/2021:20:17:02.063469
+For commit ID 256f8c15b6a0512dca6ef66967cf82a4c559a601
+Grading at Tue Sep  7 16:17:01 EDT 2021
+Attempting to compile power.c
+Attempting to compile power.o with our main
+Checking for unsigned power (unsigned x, unsigned y)
+not found
+Checking for no iteration (do, while, for)
+Checking that power is recursive
+Your code does not have the right functions.
+
+Overall Grade: F
