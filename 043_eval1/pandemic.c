@@ -1,6 +1,7 @@
 #include "pandemic.h"
 
 #include <ctype.h>
+#include <errno.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -75,7 +76,9 @@ void parsePopulation(const char * comma, country_t * country_p) {
   const char * population_end;
   population_start = comma + 1;
   population_end = comma + 1;
-  while (*population_end != '\n') {
+  const char * end_p = strchr(population_start, '\n');
+  char end = (end_p == NULL) ? '\0' : *end_p;
+  while (*population_end != end) {
     if (!isdigit(*population_end)) {
       fprintf(stderr,
               "Unexpected character: '%c' appears in the population information, which "
@@ -90,8 +93,8 @@ void parsePopulation(const char * comma, country_t * country_p) {
     fprintf(stderr, "Population information is not included in input.\n");
     exit(EXIT_FAILURE);
   }
-  unsigned long long int population = strtoull(population_start, NULL, 10);
-  if (population > ULONG_MAX) {
+  unsigned long int population = strtoul(population_start, NULL, 10);
+  if (population == ULONG_MAX && errno == ERANGE) {
     fprintf(stderr, "Input population is out of range.\n");
     exit(EXIT_FAILURE);
   }
