@@ -1,5 +1,6 @@
 #include "pandemic.h"
 
+#include <assert.h>
 #include <ctype.h>
 #include <errno.h>
 #include <limits.h>
