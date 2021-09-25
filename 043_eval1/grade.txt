@@ -1,6 +1,6 @@
-Grading at 09/25/2021:22:45:34.358784
-For commit ID 945bcd834888fa76b71bc4463b32ca8f0ac77e9b
-Grading at Sat Sep 25 18:45:31 EDT 2021
+Grading at 09/25/2021:22:58:05.095409
+For commit ID e7d07968d1006c151a0f47d3d754c910440296c2
+Grading at Sat Sep 25 18:58:02 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -8,7 +8,7 @@ rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_invalid_null.csv
-Your program successfully indicated a failure case
+Our printCountries does not consider this an error case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_invalid_containsChar.csv
 Our printCountries does not consider this an error case
@@ -17,8 +17,7 @@ Test case printCountries ./step1_tests/step1_invalid_overflow.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_population.csv
-Line_1_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_one_line_success.csv
 Your file matched the expected output
