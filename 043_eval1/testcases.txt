@@ -1,5 +1,6 @@
 #error
-printCountries step1_invalid.csv
+printCountries ./step1_tests/step1_invalid_null.csv
+printCountries ./step1_tests/step1_invalid_containsChar.csv
 
 #success
-printCountries step1_population.csv
+printCountries ./step1_tests/step1_population.csv
