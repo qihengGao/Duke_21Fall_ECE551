@@ -1,6 +1,6 @@
-Grading at 09/25/2021:21:30:16.097918
-For commit ID 470c4e7fed7621577695755157bed52f9ac6169f
-Grading at Sat Sep 25 17:30:13 EDT 2021
+Grading at 09/25/2021:21:32:34.530460
+For commit ID 9bdcbab66d3a7714af8811b265d67b0b7dfb3e97
+Grading at Sat Sep 25 17:32:32 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -11,12 +11,12 @@ Test case printCountries ./step1_tests/step1_invalid_null.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_invalid_containsChar.csv
-Your program successfully indicated a failure case
+Our printCountries does not consider this an error case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_population.csv
 Your file matched the expected output
 
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
