@@ -1,6 +1,7 @@
 #error
 printCountries ./step1_tests/step1_invalid_null.csv
 printCountries ./step1_tests/step1_invalid_containsChar.csv
+printCountries ./step1_tests/step1_invalid_overflow.csv
 
 #success
 printCountries ./step1_tests/step1_population.csv
