@@ -1,6 +1,6 @@
-Grading at 09/25/2021:22:43:16.484161
-For commit ID 35a3aed2bb0c80ed385e99e0f8dd87bbeafe1a1f
-Grading at Sat Sep 25 18:43:14 EDT 2021
+Grading at 09/25/2021:22:45:34.358784
+For commit ID 945bcd834888fa76b71bc4463b32ca8f0ac77e9b
+Grading at Sat Sep 25 18:45:31 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -19,6 +19,9 @@ Your program successfully indicated a failure case
 Test case printCountries ./step1_tests/step1_population.csv
 Line_1_did_not_match
 Your file did not match the expected ouput
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/step1_one_line_success.csv
+Your file matched the expected output
 
 You have FAILED one or more of your test cases
 Keep debugging
