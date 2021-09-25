@@ -5,3 +5,4 @@ printCountries ./step1_tests/step1_invalid_overflow.csv
 
 #success
 printCountries ./step1_tests/step1_population.csv
+printCountries ./step1_tests/step1_one_line_success.csv
