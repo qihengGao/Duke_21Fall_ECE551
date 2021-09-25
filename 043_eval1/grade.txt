@@ -1,16 +1,19 @@
-Grading at 09/25/2021:21:19:31.344359
-For commit ID 82f5a03e9a8fbda3d40056097bfec778a5d8ea67
-Grading at Sat Sep 25 17:19:29 EDT 2021
+Grading at 09/25/2021:21:30:16.097918
+For commit ID 470c4e7fed7621577695755157bed52f9ac6169f
+Grading at Sat Sep 25 17:30:13 EDT 2021
 Running your test cases
 
 Compiling printCountries
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
 gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o printCountries
 +-----------------------------------------------------------------------+
-Test case printCountries step1_invalid.csv
+Test case printCountries ./step1_tests/step1_invalid_null.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printCountries step1_population.csv
+Test case printCountries ./step1_tests/step1_invalid_containsChar.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/step1_population.csv
 Your file matched the expected output
 
 You have PASSED all of your test cases
