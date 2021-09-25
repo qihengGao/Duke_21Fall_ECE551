@@ -1,11 +1,37 @@
 #include "pandemic.h"
 
+#include <ctype.h>
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void parseName(const char * line, const char * comma, country_t * country_p);
+void parsePopulation(const char * comma, country_t * country_p);
+
 country_t parseLine(char * line) {
-  //WRITE ME
-  country_t ans;
-  ans.name[0] = '\0';
-  ans.population = 0;
-  return ans;
+  country_t country;
+  country.name[0] = '\0';
+  country.population = 0;
+
+  /** Sanity check: input line has contents.*/
+  if (line == NULL || strlen(line) == 0) {
+    fprintf(stderr, "Empty Input.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  const char * comma = strchr(line, ',');
+  if (comma == NULL) {
+    fprintf(
+        stderr,
+        "The input line does not match the standard format: a comma does not exist.\n");
+    exit(EXIT_FAILURE);
+  }
+
+  parseName(line, comma, &country);
+  parsePopulation(comma, &country);
+
+  return country;
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
@@ -21,4 +47,53 @@ void printCountryWithMax(country_t * countries,
                          unsigned ** data,
                          size_t n_days) {
   //WRITE ME
+}
+
+void parseName(const char * line, const char * comma, country_t * country_p) {
+  const char * name_start;
+  const char * name_end;
+  name_start = line;
+  name_end = line;
+  while (name_end != comma) {
+    name_end++;
+  }
+  size_t name_len = (size_t)(name_end - name_start);
+  if (name_len == 0) {
+    fprintf(stderr, "The input does not contain the name information.\n");
+    exit(EXIT_FAILURE);
+  }
+  else if (name_len > MAX_NAME_LEN - 1) {
+    fprintf(stderr, "The name is too long.\n");
+    exit(EXIT_FAILURE);
+  }
+  memcpy(country_p->name, name_start, name_len);
+  country_p->name[name_len] = '\0';
+}
+
+void parsePopulation(const char * comma, country_t * country_p) {
+  const char * population_start;
+  const char * population_end;
+  population_start = comma + 1;
+  population_end = comma + 1;
+  while (*population_end != '\n') {
+    if (!isdigit(*population_end)) {
+      fprintf(stderr,
+              "Unexpected character: '%c' appears in the population information, which "
+              "should contain digits only.\n",
+              *population_end);
+      exit(EXIT_FAILURE);
+    }
+    population_end++;
+  }
+  size_t population_len = (size_t)(population_end - population_start);
+  if (population_len == 0) {
+    fprintf(stderr, "Population information is not included in input.\n");
+    exit(EXIT_FAILURE);
+  }
+  unsigned long long int population = strtoull(population_start, NULL, 10);
+  if (population > ULONG_MAX) {
+    fprintf(stderr, "Input population is out of range.\n");
+    exit(EXIT_FAILURE);
+  }
+  country_p->population = (uint64_t)population;
 }

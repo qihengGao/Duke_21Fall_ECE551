@@ -1,0 +1,5 @@
+#error
+printCountries step1_invalid.csv
+
+#success
+printCountries step1_population.csv
