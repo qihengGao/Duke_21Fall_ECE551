@@ -85,7 +85,7 @@ void parsePopulation(const char * comma, country_t * country_p) {
   population_end = comma + 1;
 
   /* Iterate on the rest of line to check if it only contains digits. */
-  /* Set the end character  where the iteration should end, generally it is '\n', but if it is not exist,
+  /* Set the end character where the iteration should end, generally it is '\n', but if it is not exist,
    * then the line ends without a '\n', so we set the end character to '\0'. 
    */
   const char * end_p = strchr(population_start, '\n');
