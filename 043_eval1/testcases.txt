@@ -1,6 +1,5 @@
 #error
 printCountries ./step1_tests/step1_invalid_null.csv
-printCountries ./step1_tests/invalid_noName.csv
 printCountries ./step1_tests/invalid_long_name.csv
 printCountries ./step1_tests/invalid_much_longer_name.csv
 printCountries ./step1_tests/invalid_no_population1.csv
@@ -12,3 +11,4 @@ printCountries ./step1_tests/step1_invalid_overflow.csv
 printCountries ./step1_tests/step1_population.csv
 printCountries ./step1_tests/step1_one_line_success.csv
 printCountries ./step1_tests/step1_two_lines.csv
+printCountries ./step1_tests/valid_noName.txt

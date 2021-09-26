@@ -60,11 +60,7 @@ void parseName(const char * line, const char * comma, country_t * country_p) {
     name_end++;
   }
   size_t name_len = (size_t)(name_end - name_start);
-  if (name_len == 0) {
-    fprintf(stderr, "The input does not contain the name information.\n");
-    exit(EXIT_FAILURE);
-  }
-  else if (name_len > MAX_NAME_LEN - 1) {
+  if (name_len > MAX_NAME_LEN - 1) {
     fprintf(stderr, "The name is too long.\n");
     exit(EXIT_FAILURE);
   }
