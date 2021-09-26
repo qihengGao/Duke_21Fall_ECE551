@@ -1,18 +1,26 @@
-Grading at 09/26/2021:22:12:30.815140
-For commit ID bbd0c3e3f312a55ceabfe3611c07e2f448fd0050
-Grading at Sun Sep 26 18:12:27 EDT 2021
+Grading at 09/26/2021:22:25:55.585237
+For commit ID 44532aab123a88f211a309d5aa6d2f74016b520d
+Grading at Sun Sep 26 18:25:50 EDT 2021
 Attempting to compile sortLines.c
 #################################################
 testcase1:
-valgrind reported memory errors
+testcase1 passed, your program successfully indicated a failure
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase2:
-Your output is incorrect
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase3:
-valgrind reported memory errors
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase4:
-valgrind reported memory errors
+Your output is correct
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 
-Overall Grade: F
+Overall Grade: A
