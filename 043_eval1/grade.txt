@@ -1,6 +1,6 @@
-Grading at 09/26/2021:01:21:37.724832
-For commit ID 3c94a6ae3e9cebde737dc28ba13c5dad57d105f7
-Grading at Sat Sep 25 21:21:30 EDT 2021
+Grading at 09/26/2021:02:33:48.599087
+For commit ID a590e3da9374db731f6b0a3fa3641a5464ba52cb
+Grading at Sat Sep 25 22:33:40 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -22,10 +22,16 @@ Your program successfully indicated a failure case
 Test case printCountries ./step1_tests/invalid_no_population2.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/invalid_no_population3.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_invalid_containsChar.csv
 Our printCountries does not consider this an error case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_invalid_overflow.csv
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/invalid_commas.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_population.csv
