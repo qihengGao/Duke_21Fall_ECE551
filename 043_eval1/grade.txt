@@ -1,6 +1,6 @@
-Grading at 09/26/2021:00:56:10.409009
-For commit ID 544833b0e72fc5c510c1862f6adbc5603f38dc2e
-Grading at Sat Sep 25 20:56:04 EDT 2021
+Grading at 09/26/2021:01:21:37.724832
+For commit ID 3c94a6ae3e9cebde737dc28ba13c5dad57d105f7
+Grading at Sat Sep 25 21:21:30 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -9,9 +9,6 @@ gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printCountries.o -o pri
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_invalid_null.csv
 Your program successfully indicated a failure case
-+-----------------------------------------------------------------------+
-Test case printCountries ./step1_tests/invalid_noName.csv
-Our printCountries does not consider this an error case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/invalid_long_name.csv
 Your program successfully indicated a failure case
@@ -38,6 +35,9 @@ Test case printCountries ./step1_tests/step1_one_line_success.csv
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_two_lines.csv
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/valid_noName.txt
 Your file matched the expected output
 
 You have FAILED one or more of your test cases
