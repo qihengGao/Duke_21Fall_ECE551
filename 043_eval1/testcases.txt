@@ -14,3 +14,4 @@ printCountries ./step1_tests/step1_population.csv
 printCountries ./step1_tests/step1_one_line_success.csv
 printCountries ./step1_tests/step1_two_lines.csv
 printCountries ./step1_tests/valid_noName.txt
+printCountries ./step1_tests/valid_nameWithCharDig.csv
