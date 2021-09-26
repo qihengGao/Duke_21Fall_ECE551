@@ -110,10 +110,10 @@ void parsePopulation(const char * comma, country_t * country_p) {
     exit(EXIT_FAILURE);
   }
 
-  /* Parse string to integer. As the country.population is uint64_t, use strtoul. */
-  unsigned long int population = strtoul(population_start, NULL, 10);
+  /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
+  unsigned long long int population = strtoul(population_start, NULL, 10);
   /* Check overflow. */
-  if (population == ULONG_MAX && errno == ERANGE) {
+  if (population == ULLONG_MAX && errno == ERANGE) {
     fprintf(stderr, "Input population is out of range.\n");
     exit(EXIT_FAILURE);
   }
