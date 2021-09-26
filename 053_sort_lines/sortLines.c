@@ -22,12 +22,14 @@ void sortLines(FILE * f) {
   while (getline(&curr, &size, f) != -1) {
     lines = realloc(lines, (count + 1) * sizeof(*lines));
     lines[count] = curr;
+    curr = NULL;
     count++;
   }
   free(curr);
   sortData(lines, count);
   for (size_t i = 0; i < count; i++) {
     printf("%s", lines[i]);
+    free(lines[i]);
   }
   free(lines);
 }
