@@ -4,8 +4,10 @@ printCountries ./step1_tests/invalid_long_name.csv
 printCountries ./step1_tests/invalid_much_longer_name.csv
 printCountries ./step1_tests/invalid_no_population1.csv
 printCountries ./step1_tests/invalid_no_population2.csv
+printCountries ./step1_tests/invalid_no_population3.csv
 printCountries ./step1_tests/step1_invalid_containsChar.csv
 printCountries ./step1_tests/step1_invalid_overflow.csv
+printCountries ./step1_tests/invalid_commas.csv
 
 #success
 printCountries ./step1_tests/step1_population.csv
