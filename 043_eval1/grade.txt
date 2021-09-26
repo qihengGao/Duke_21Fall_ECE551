@@ -1,6 +1,6 @@
-Grading at 09/26/2021:03:40:53.022468
-For commit ID acd5c27e40f9dd3ce2afc3fe855b5e108b1872ff
-Grading at Sat Sep 25 23:40:44 EDT 2021
+Grading at 09/26/2021:03:48:34.164948
+For commit ID bf3463478dc1e8400fe094877578db48bfc6b55c
+Grading at Sat Sep 25 23:48:25 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -44,6 +44,9 @@ Test case printCountries ./step1_tests/step1_two_lines.csv
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/valid_noName.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/valid_nameWithCharDig.csv
 Your file matched the expected output
 
 You have FAILED one or more of your test cases
