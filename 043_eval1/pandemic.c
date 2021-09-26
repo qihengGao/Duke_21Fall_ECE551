@@ -84,13 +84,13 @@ void parsePopulation(const char * comma, country_t * country_p) {
   population_start = comma + 1;
   population_end = comma + 1;
 
+  /* We would argue that the population part is considered valid iff it contains digits only. */
   /* Iterate on the rest of line to check if it only contains digits. */
   /* Set the end character where the iteration should end, generally it is '\n', but if it is not exist,
-   * then the line ends without a '\n', so we set the end character to '\0'. 
-   */
+   * then the line ends without a '\n', so we set the end character to '\0'. */
   const char * end_p = strchr(population_start, '\n');
   char end = (end_p == NULL) ? '\0' : *end_p;
-  /* Iteration starts. */
+  /* Iteration starts until population_end gets to the end character. */
   while (*population_end != end) {
     /* Non-digit character occurs, exit. */
     if (!isdigit(*population_end)) {
@@ -111,7 +111,7 @@ void parsePopulation(const char * comma, country_t * country_p) {
   }
 
   /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
-  unsigned long long int population = strtoul(population_start, NULL, 10);
+  unsigned long long int population = strtoull(population_start, NULL, 10);
   /* Check overflow. */
   if (population == ULLONG_MAX && errno == ERANGE) {
     fprintf(stderr, "Input population is out of range.\n");
