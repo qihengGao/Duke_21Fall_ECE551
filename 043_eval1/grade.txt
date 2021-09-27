@@ -1,6 +1,6 @@
-Grading at 09/27/2021:15:10:00.584879
-For commit ID 7aa300ad7449be0c51dfb69ea3be5baa3d423f60
-Grading at Mon Sep 27 11:09:51 EDT 2021
+Grading at 09/27/2021:15:45:00.108788
+For commit ID e2b1d87bd2edaa87e27b902a44e8e4522f9cbecc
+Grading at Mon Sep 27 11:44:49 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -34,11 +34,8 @@ Your program successfully indicated a failure case
 Test case printCountries ./step1_tests/invalid_commas.csv
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case printCountries ./step1_tests/invalid_pop_with_spaces.csv
-Our printCountries does not consider this an error case
-+-----------------------------------------------------------------------+
-Test case printCountries ./step1_tests/invalid_minusNum.csv
-Our printCountries does not consider this an error case
+Test case printCountries ./step1_tests/invalid_dupliChar.csv
+Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_population.csv
 Your file matched the expected output
@@ -53,6 +50,12 @@ Test case printCountries ./step1_tests/valid_noName.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/valid_nameWithCharDig.csv
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/invalid_pop_with_spaces.csv
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/invalid_minusNum.csv
 Your file matched the expected output
 
 You have FAILED one or more of your test cases
