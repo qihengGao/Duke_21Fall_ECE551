@@ -41,7 +41,7 @@ country_t parseLine(char * line) {
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
-  /** NULL check. */
+  /* NULL check. */
   if (data == NULL) {
     fprintf(stderr, "Input data is not exist.\n");
     exit(EXIT_FAILURE);
@@ -51,7 +51,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
     exit(EXIT_FAILURE);
   }
 
-  /** Check if the input is sufficient. */
+  /* Check if the input is sufficient. */
   if (n_days < 7) {
     return;
   }
@@ -68,7 +68,8 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
    * when end = 6 (0-based), this is the first time our 'window' gets the size 7.
    * Then we can get the result by curr_sum / 7.0, put the result in the proper index.
    * increase next_to_fill by 1.
-   * To keep the size fixed at 7, we 'squeeze the window' through increasing window start by 1,
+   * To keep the size fixed at 7, 
+   * we 'squeeze the window' through increasing window start by 1,
    * 'making space' for window to include newly incoming elements.
    * Iterate through the data array unitl our window hits the end. */
   size_t curr_sum = 0;
@@ -99,7 +100,7 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
   size_t cumulative_sum = 0;
 
   /* Initialize an index indicator which indicates 
-   * the next index of cum  where the result should be stored*/
+   * the next index of cum  where the result should be stored. */
   size_t next_to_fill = 0;
 
   /* Iterate on daily cases, calculating cumulative cases per 100,000 people. */
@@ -125,19 +126,21 @@ void printCountryWithMax(country_t * countries,
     exit(EXIT_FAILURE);
   }
 
-  /* Initialize the maximum as -1 for later compaison. */
   unsigned max_case_num = 0;
+
   /* The coresponding country which has the maximum daily cases. */
   char * country_name = NULL;
+
   /* Keep track of the frequency of maximum in order to detect tie. */
   size_t frequency_of_max = 0;
 
   /* Iterate through the 2D array. */
-  /* Obtain maximum cases for each country.
-   * Update the corresponding country_name and max_case_num only when meet a greater case number,
+  /* Obtain maximum case number for each country.
+   * Update the corresponding country_name 
+   * and max_case_num only when meet a greater case number,
    * and restore the frequency count to 1.
-   * Or when meet a case number that is equal to current max_case_num, increase the frequency
-   * to indicate a potential tie. */
+   * Or when meet a case number that is equal to current max_case_num,
+   * increase the frequency to indicate a potential tie. */
   for (size_t i = 0; i < n_countries; i++) {
     unsigned max_cases_county_i = getMaxCaseNum(data[i], n_days);
     if (max_cases_county_i > max_case_num) {
@@ -184,7 +187,8 @@ void parseName(const char * line, const char * comma, country_t * country_p) {
   country_p->name[name_len] = '\0';
 }
 
-/* Parse the population in line, print out  print out error messages and exit if an error occurs. */
+/* Parse the population in line,
+ * print out  print out error messages and exit if an error occurs. */
 void parsePopulation(const char * comma, country_t * country_p) {
   /* Initialize two pointers which both point at the one character after the comma. */
   const char * population_start;
@@ -192,13 +196,17 @@ void parsePopulation(const char * comma, country_t * country_p) {
   population_start = comma + 1;
   population_end = comma + 1;
 
-  /* We would argue that the population part is considered valid iff it contains digits only. */
+  /* We would argue that the population part 
+   * is considered valid iff it contains digits only. */
+
   /* Iterate on the rest of line to check if it only contains digits. */
   /* Set the end character where the iteration should end, 
    * generally it is '\n', but if it is not exist,
-   * then the line ends without a '\n', so we set the end character to '\0'. */
+   * then the line ends without a '\n',
+   * so we set the end character to '\0'. */
   const char * end_p = strchr(population_start, '\n');
   char end = (end_p == NULL) ? '\0' : *end_p;
+
   /* Iteration starts until population_end gets to the end character. */
   while (*population_end != end) {
     /* Non-digit character occurs, exit. */
@@ -221,13 +229,14 @@ void parsePopulation(const char * comma, country_t * country_p) {
 
   /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
   unsigned long long int population = strtoull(population_start, NULL, 10);
+
   /* Check overflow. */
   if (population == ULLONG_MAX && errno == ERANGE) {
     fprintf(stderr, "Input population is out of range.\n");
     exit(EXIT_FAILURE);
   }
 
-  /* Assign the parsed integer to coutry.population. */
+  /* Assign the parsed integer to coutry_t.population. */
   country_p->population = (uint64_t)population;
 }
 
