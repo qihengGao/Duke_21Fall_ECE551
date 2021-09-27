@@ -190,7 +190,9 @@ void parseName(char * line, char * comma, country_t * country_p) {
 /* Parse the population in line,
  * print out  print out error messages and exit if an error occurs. */
 void parsePopulation(char * comma, country_t * country_p) {
-  /* Initialize two pointers which both point at the one character after the comma. */
+  /* Initialize two pointers population_start and population_end,
+  which both point at the one character after the comma,
+  and they indicate the start and end of population data respectively. */
   char * population_start = comma + 1;
   char * population_end = comma + 1;
 
@@ -199,6 +201,7 @@ void parsePopulation(char * comma, country_t * country_p) {
 
   /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
   unsigned long long int population = strtoull(population_start, &population_end, 10);
+  /* There is not valid input data. */
   if (population_end == population_start) {
     fprintf(stderr, "Population information is not included in input.\n");
     exit(EXIT_FAILURE);
