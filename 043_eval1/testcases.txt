@@ -8,6 +8,7 @@ printCountries ./step1_tests/invalid_no_population3.csv
 printCountries ./step1_tests/step1_invalid_containsChar.csv
 printCountries ./step1_tests/step1_invalid_overflow.csv
 printCountries ./step1_tests/invalid_commas.csv
+printCountries ./step1_tests/invalid_pop_with_spaces.csv
 
 #success
 printCountries ./step1_tests/step1_population.csv
