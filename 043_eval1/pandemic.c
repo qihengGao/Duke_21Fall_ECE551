@@ -10,8 +10,8 @@
 
 /* Function prototypes.
  * Please see the detailed descriptions and implementations at the bottom. */
-void parseName(const char * line, const char * comma, country_t * country_p);
-void parsePopulation(const char * comma, country_t * country_p);
+void parseName(char * line, char * comma, country_t * country_p);
+void parsePopulation(char * comma, country_t * country_p);
 unsigned getMaxCaseNum(unsigned * case_array, size_t size);
 
 country_t parseLine(char * line) {
@@ -25,7 +25,7 @@ country_t parseLine(char * line) {
     exit(EXIT_FAILURE);
   }
   /* Check if the comma exists. */
-  const char * comma = strchr(line, ',');
+  char * comma = strchr(line, ',');
   if (comma == NULL) {
     fprintf(
         stderr,
@@ -162,7 +162,7 @@ void printCountryWithMax(country_t * countries,
 }
 
 /* Parse the name in line, print out error messages and exit if an error occurs. */
-void parseName(const char * line, const char * comma, country_t * country_p) {
+void parseName(char * line, char * comma, country_t * country_p) {
   const char * name_start;
   name_start = line;
 
@@ -189,46 +189,20 @@ void parseName(const char * line, const char * comma, country_t * country_p) {
 
 /* Parse the population in line,
  * print out  print out error messages and exit if an error occurs. */
-void parsePopulation(const char * comma, country_t * country_p) {
+void parsePopulation(char * comma, country_t * country_p) {
   /* Initialize two pointers which both point at the one character after the comma. */
-  const char * population_start;
-  const char * population_end;
-  population_start = comma + 1;
-  population_end = comma + 1;
+  char * population_start = comma + 1;
+  char * population_end = comma + 1;
 
   /* We would argue that the population part 
    * is considered valid iff it contains digits only. */
 
-  /* Iterate on the rest of line to check if it only contains digits. */
-  /* Set the end character where the iteration should end, 
-   * generally it is '\n', but if it is not exist,
-   * then the line ends without a '\n',
-   * so we set the end character to '\0'. */
-  const char * end_p = strchr(population_start, '\n');
-  char end = (end_p == NULL) ? '\0' : *end_p;
-
-  /* Iteration starts until population_end gets to the end character. */
-  while (*population_end != end) {
-    /* Non-digit character occurs, exit. */
-    if (!isdigit(*population_end)) {
-      fprintf(stderr,
-              "Unexpected character: '%c' appears in the population information, which "
-              "should contain digits only.\n",
-              *population_end);
-      exit(EXIT_FAILURE);
-    }
-    population_end++;
-  }
-
-  /* Similar computation as getting the name length in parseName. */
-  size_t population_len = (size_t)(population_end - population_start);
-  if (population_len == 0) {
+  /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
+  unsigned long long int population = strtoull(population_start, &population_end, 10);
+  if (population_end == population_start) {
     fprintf(stderr, "Population information is not included in input.\n");
     exit(EXIT_FAILURE);
   }
-
-  /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
-  unsigned long long int population = strtoull(population_start, NULL, 10);
 
   /* Check overflow. */
   if (population == ULLONG_MAX && errno == ERANGE) {
