@@ -24,6 +24,7 @@ country_t parseLine(char * line) {
     fprintf(stderr, "Empty Input.\n");
     exit(EXIT_FAILURE);
   }
+
   /* Check if the comma exists. */
   char * comma = strchr(line, ',');
   if (comma == NULL) {
@@ -96,6 +97,10 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
     exit(EXIT_FAILURE);
   }
 
+  if (n_days <= 0) {
+    return;
+  }
+
   /* Keep track of cummulative amout of cases. */
   size_t cumulative_sum = 0;
 
@@ -124,6 +129,10 @@ void printCountryWithMax(country_t * countries,
   if (data == NULL || *data == NULL) {
     fprintf(stderr, "The input cases data is not exist.\n");
     exit(EXIT_FAILURE);
+  }
+
+  if (n_countries <= 0 || n_days <= 0) {
+    return;
   }
 
   unsigned max_case_num = 0;
