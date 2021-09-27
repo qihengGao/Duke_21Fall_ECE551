@@ -1,6 +1,6 @@
-Grading at 09/26/2021:04:21:36.277082
-For commit ID 7b5c5b41c270e39e6a75dec54547f44595fdd3b7
-Grading at Sun Sep 26 00:21:27 EDT 2021
+Grading at 09/27/2021:14:58:07.446676
+For commit ID a8da6d88580e720d3b30a77dcc41810c7c700422
+Grading at Mon Sep 27 10:57:58 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -33,6 +33,9 @@ Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/invalid_commas.csv
 Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case printCountries ./step1_tests/invalid_pop_with_spaces.csv
+Our printCountries does not consider this an error case
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_population.csv
 Your file matched the expected output
