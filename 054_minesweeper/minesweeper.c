@@ -43,6 +43,7 @@ board_t * makeBoard(int w, int h, int numMines) {
   board_t * b = malloc(sizeof(*b));
   b->width = w;
   b->height = h;
+  b->totalMines = numMines;
   // row major
   b->board = malloc(h * sizeof(*(b->board)));
   for (int i = 0; i < h; i++) {
