@@ -10,6 +10,7 @@ printCountries ./step1_tests/invalid_commas.csv
 printCountries ./step1_tests/invalid_dupliChar.csv
 printCountries ./population_withln.csv
 
+
 #success
 printCountries ./step1_tests/step1_population.csv
 printCountries ./step1_tests/step1_one_line_success.csv
@@ -19,3 +20,4 @@ printCountries ./step1_tests/valid_nameWithCharDig.csv
 printCountries ./step1_tests/invalid_pop_with_spaces.csv
 printCountries ./step1_tests/invalid_minusNum.csv
 printCountries ./step1_tests/step1_invalid_containsChar.csv
+printRunningAvg ./population.csv daily_small.csv
