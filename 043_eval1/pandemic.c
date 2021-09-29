@@ -9,7 +9,8 @@
 #include <string.h>
 
 /* Function prototypes.
- * Please see the detailed descriptions and implementations at the bottom. */
+ * Please see the detailed descriptions and implementations at the bottom.
+ */
 void parseName(char * line, char * comma, country_t * country_p);
 void parsePopulation(char * comma, country_t * country_p);
 unsigned getMaxCaseNum(unsigned * case_array, size_t size);
@@ -61,12 +62,13 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   }
 
   /* Initialize an index indicator which indicates 
-   * the next index of avg where the result should be stored*/
+   * the next index of avg where the result should be stored.
+   */
   size_t next_to_fill = 0;
 
   /* We carry out 'sliding window' approach, 
-   * as we believe this approach can circumvent duplicated computation.  */
-  /* The 'window' on the data array is characterized by the 'start' and 'end', 
+   * as we believe this approach can circumvent duplicated computation.
+   * The 'window' on the data array is characterized by the 'start' and 'end', 
    * and the window size is fixed as 7. 
    * curr_sum keeps track of  the sum of the elements in window.
    * when end = 6 (0-based), this is the first time our 'window' gets the size 7.
@@ -75,7 +77,8 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
    * To keep the size fixed at 7, 
    * we 'squeeze the window' through increasing window start by 1,
    * 'making space' for window to include newly incoming elements.
-   * Iterate through the data array unitl our window hits the end. */
+   * Iterate through the data array unitl our window hits the end.
+   */
   size_t curr_sum = 0;
   for (size_t start = 0, end = 0; end < n_days; end++) {
     curr_sum += data[end];
@@ -109,7 +112,8 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
   size_t cumulative_sum = 0;
 
   /* Initialize an index indicator which indicates 
-   * the next index of cum  where the result should be stored. */
+   * the next index of cum  where the result should be stored.
+   */
   size_t next_to_fill = 0;
 
   /* Iterate on daily cases, calculating cumulative cases per 100,000 people. */
@@ -154,7 +158,8 @@ void printCountryWithMax(country_t * countries,
    * and max_case_num only when meet a greater case number,
    * and restore the frequency count to 1.
    * Or when meet a case number that is equal to current max_case_num,
-   * increase the frequency to indicate a potential tie. */
+   * increase the frequency to indicate a potential tie.
+   */
   for (size_t i = 0; i < n_countries; i++) {
     unsigned max_cases_county_i = getMaxCaseNum(data[i], n_days);
     if (max_cases_county_i > max_case_num) {
@@ -175,7 +180,13 @@ void printCountryWithMax(country_t * countries,
   }
 }
 
-/* Parse the name in line, print out error messages and exit if an error occurs. */
+/* parseName takes three parameters:
+ *    line (pointer at the start of the line)
+ *    comma (position of the first comma)
+ *    country_p (pointer to country_t)
+ * parses the name in line and assigns to the country_t.name,
+ * prints out error messages and exit if an error occurs.
+ */
 void parseName(char * line, char * comma, country_t * country_p) {
   const char * name_start;
   name_start = line;
@@ -201,17 +212,23 @@ void parseName(char * line, char * comma, country_t * country_p) {
   country_p->name[name_len] = '\0';
 }
 
-/* Parse the population in line,
- * print out  print out error messages and exit if an error occurs. */
+/* parsePopulation takes two parameters:
+ *    comma (the address of the firsr comma)
+ *    country_p (the poniner to country_t)
+ * and parses the valid digits in line,
+ * print out  print out error messages and exit if an error occurs.
+ */
 void parsePopulation(char * comma, country_t * country_p) {
   /* Initialize two pointers population_start and population_end,
    * which both point at the one character after the comma,
-   * and they indicate the start and end of population data respectively. */
+   * and they indicate the start and end of population data respectively.
+   */
   char * population_start = comma + 1;
   char * population_end = comma + 1;
 
   /* We would argue that the population part 
-   * is considered valid iff it contains digits only. */
+   * is considered valid iff it contains digits only.
+   */
 
   /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
   unsigned long long int population = strtoull(population_start, &population_end, 10);
@@ -232,7 +249,11 @@ void parsePopulation(char * comma, country_t * country_p) {
   country_p->population = (uint64_t)population;
 }
 
-/* Return the maximum value of the given array of cases. */
+/* getMaxCasenum takes two parameters:
+ *    case_array (an array of cases number, unsigned)
+ *    size (the number of items in case_array)
+ * and returns the maximum value of the given array of cases.
+ */
 unsigned getMaxCaseNum(unsigned * case_array, size_t size) {
   if (case_array == NULL) {
     fprintf(stderr, "Input case array is empty.\n");
