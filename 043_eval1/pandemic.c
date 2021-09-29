@@ -14,6 +14,7 @@ void parseName(char * line, char * comma, country_t * country_p);
 void parsePopulation(char * comma, country_t * country_p);
 unsigned getMaxCaseNum(unsigned * case_array, size_t size);
 
+/* Step 1. */
 country_t parseLine(char * line) {
   country_t country;
   country.name[0] = '\0';
@@ -33,6 +34,7 @@ country_t parseLine(char * line) {
         "The input line does not match the standard format: a comma does not exist.\n");
     exit(EXIT_FAILURE);
   }
+
   /*  We consider characters before the first comma as the name of the country. */
   parseName(line, comma, &country);
   /* The digits after the first comma as the population. */
@@ -41,6 +43,7 @@ country_t parseLine(char * line) {
   return country;
 }
 
+/* Step 2. */
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   /* NULL check. */
   if (data == NULL) {
@@ -85,6 +88,7 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
   }
 }
 
+/* Step 3. */
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
   /* NULL check. */
   if (data == NULL) {
@@ -116,6 +120,7 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
   }
 }
 
+/* Step 4. */
 void printCountryWithMax(country_t * countries,
                          size_t n_countries,
                          unsigned ** data,
@@ -200,8 +205,8 @@ void parseName(char * line, char * comma, country_t * country_p) {
  * print out  print out error messages and exit if an error occurs. */
 void parsePopulation(char * comma, country_t * country_p) {
   /* Initialize two pointers population_start and population_end,
-  which both point at the one character after the comma,
-  and they indicate the start and end of population data respectively. */
+   * which both point at the one character after the comma,
+   * and they indicate the start and end of population data respectively. */
   char * population_start = comma + 1;
   char * population_end = comma + 1;
 
@@ -210,6 +215,7 @@ void parsePopulation(char * comma, country_t * country_p) {
 
   /* Parse string to integer. As the country.population is uint64_t, use strtoull. */
   unsigned long long int population = strtoull(population_start, &population_end, 10);
+
   /* There is not valid input data. */
   if (population_end == population_start) {
     fprintf(stderr, "Population information is not included in input.\n");
