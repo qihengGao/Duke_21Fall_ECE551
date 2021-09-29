@@ -20,4 +20,5 @@ printCountries ./step1_tests/valid_nameWithCharDig.csv
 printCountries ./step1_tests/invalid_pop_with_spaces.csv
 printCountries ./step1_tests/invalid_minusNum.csv
 printCountries ./step1_tests/step1_invalid_containsChar.csv
-printRunningAvg ./population.csv daily_small.csv
+printRunningAvg ./population.csv ./daily_small.csv
+printRunningAvg ./population.csv ./daily_small.csv
