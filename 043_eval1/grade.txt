@@ -1,6 +1,6 @@
-Grading at 09/29/2021:02:21:25.148332
-For commit ID dc1f273e76b5176b5e1b40308b0a96d5bcb435ad
-Grading at Tue Sep 28 22:21:13 EDT 2021
+Grading at 09/29/2021:16:06:57.626925
+For commit ID aaf371ee878d0f015f814f35a5a623f533783eba
+Grading at Wed Sep 29 12:06:44 EDT 2021
 Running your test cases
 
 Compiling printCountries
@@ -59,6 +59,13 @@ Test case printCountries ./step1_tests/invalid_minusNum.csv
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case printCountries ./step1_tests/step1_invalid_containsChar.csv
+Your file matched the expected output
+
+Compiling printRunningAvg
+rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
+gcc -std=gnu99 -Werror -Wall -pedantic -ggdb3 pandemic.c printRunningAvg.o -o printRunningAvg
++-----------------------------------------------------------------------+
+Test case printRunningAvg ./population.csv daily_small.csv
 Your file matched the expected output
 
 You have PASSED all of your test cases
