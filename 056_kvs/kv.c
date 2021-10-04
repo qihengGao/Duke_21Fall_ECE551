@@ -24,10 +24,7 @@ kvarray_t * readKVs(const char * fname) {
   size_t sz = 0;
   ssize_t read_len = 0;
   while ((read_len = getline(&key_val_buffer, &sz, f)) != -1) {
-    char * pair = key_val_buffer;
-    addNode(pair, read_len, result);
-    free(pair);
-    key_val_buffer = NULL;
+    addNode(key_val_buffer, read_len, result);
   }
   free(key_val_buffer);
   if (fclose(f) != 0) {
