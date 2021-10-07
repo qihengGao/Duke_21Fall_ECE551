@@ -36,7 +36,8 @@ void printCounts(counts_t * c, FILE * outFile) {
   for (size_t i = 0; i < c->next; i++) {
     fprintf(outFile, "%s: %zu\n", c->nodes[i]->val, c->nodes[i]->count);
   }
-  fprintf(outFile, "%s: %zu\n", "<unknown>", c->unknown);
+  if (c->unknown > 0)
+    fprintf(outFile, "<unknown> : %zu\n", c->unknown);
 }
 
 void freeCounts(counts_t * c) {
