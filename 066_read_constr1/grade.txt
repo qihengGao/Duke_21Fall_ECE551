@@ -1,8 +1,10 @@
-Grading at 10/13/2021:01:58:25.036972
-For commit ID 01893aab670c71085095ff02c065c99337d0f939
-Grading at Tue Oct 12 21:58:24 EDT 2021
+Grading at 10/13/2021:02:01:15.404850
+For commit ID ada87eb3aadc258240770e987ef68a2510979e81
+Grading at Tue Oct 12 22:01:15 EDT 2021
 Attempting to compile:
-g++ -std=gnu++98 -Wall -Werror -pedantic -ggdb3 -o result code.cpp
-Your Makefile did not produce a binary called 'code'.   Please correct that
+g++ -std=gnu++98 -Wall -Werror -pedantic -ggdb3 -o code code.cpp
+Your Makefile produced a binary called 'code'
+Your file matched the expected output
+Your output matched what we expected
 
-Overall Grade: FAILED
+Overall Grade: PASSED
