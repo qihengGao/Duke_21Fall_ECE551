@@ -1,11 +1,11 @@
-Grading at 10/17/2021:22:07:08.822533
-For commit ID e10441e5e5df5576688411a9bf2978f998e7dbf3
-Grading at Sun Oct 17 18:07:02 EDT 2021
+Grading at 10/17/2021:22:17:25.722208
+For commit ID 93c19ad3dbcf54be8b1210f2faef505e9978af86
+Grading at Sun Oct 17 18:17:18 EDT 2021
 Attempting to compile:
 rm -f *.o  *~ intArrayTest
 #################################################
 testcase1:
-valgrind reported memory errors
+Your output is incorrect
 #################################################
 testcase2:
 Your output is correct
