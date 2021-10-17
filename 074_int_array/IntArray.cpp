@@ -46,11 +46,9 @@ int IntArray::size() const {
 }
 
 bool IntArray::operator==(const IntArray & rhs) const {
-  if (this != &rhs) {
-    for (int i = 0; i < this->numElements; i++) {
-      if (this->data[i] != rhs.data[i]) {
-        return false;
-      }
+  for (int i = 0; i < this->numElements; i++) {
+    if (this->data[i] != rhs.data[i]) {
+      return false;
     }
   }
   return (this->numElements == rhs.numElements);
