@@ -60,11 +60,11 @@ bool IntArray::operator!=(const IntArray & rhs) const {
 
 std::ostream & operator<<(std::ostream & s, const IntArray & rhs) {
   s << "{";
-  for (int i = 0; i < rhs.size() - 1; i++) {
+  for (int i = 0; i < rhs.size(); i++) {
     s << rhs[i];
-    s << ", ";
+    if (i != rhs.size() - 1)
+      s << ", ";
   }
-  s << rhs[rhs.size() - 1];
   s << "}";
   return s;
 }
