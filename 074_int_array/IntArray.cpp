@@ -6,11 +6,11 @@
 
 IntArray::IntArray() : data(NULL), numElements(0) {
 }
-IntArray::IntArray(int n) : data(new int[n]), numElements(n) {
+IntArray::IntArray(int n) : data(new int[n]()), numElements(n) {
 }
 
 IntArray::IntArray(const IntArray & rhs) :
-    data(new int[rhs.numElements]),
+    data(new int[rhs.numElements]()),
     numElements(rhs.numElements) {
   for (int i = 0; i < rhs.numElements; i++) {
     this->data[i] = rhs.data[i];
@@ -21,7 +21,7 @@ IntArray::~IntArray() {
 }
 
 IntArray & IntArray::operator=(const IntArray & rhs) {
-  int * tempData = new int[rhs.numElements];
+  int * tempData = new int[rhs.numElements]();
   if (this != &rhs) {
     for (int i = 0; i < rhs.numElements; i++) {
       tempData[i] = rhs.data[i];
