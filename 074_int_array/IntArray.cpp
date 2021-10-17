@@ -21,8 +21,8 @@ IntArray::~IntArray() {
 }
 
 IntArray & IntArray::operator=(const IntArray & rhs) {
-  int * tempData = new int[rhs.numElements]();
   if (this != &rhs) {
+    int * tempData = new int[rhs.numElements]();
     for (int i = 0; i < rhs.numElements; i++) {
       tempData[i] = rhs.data[i];
     }
