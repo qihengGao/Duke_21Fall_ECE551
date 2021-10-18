@@ -1,8 +1,19 @@
-Grading at 10/18/2021:19:16:38.003729
-For commit ID 1a167e07bb450942ea30504d4d8d0c4c5407981e
-Grading at Mon Oct 18 15:16:37 EDT 2021
+Grading at 10/18/2021:19:18:09.129082
+For commit ID 56c1de21eea415d2181845c36c39bda74e59a6aa
+Grading at Mon Oct 18 15:18:08 EDT 2021
 Running your test cases
-Program must be one of story-step1 story-step2 story-step3 story-step4
-But found "./story-step1"
+
+Compiling story-step1
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step1.c
+gcc -o story-step1 story-step1.o rand_story.o provided.o
+rm story-step1.o
++-----------------------------------------------------------------------+
+Test case story-step1 ./step1-tc/story.txt
+Your file matched the expected output
+
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
