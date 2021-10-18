@@ -1,2 +1,2 @@
 #success
-./story-step1 ./step1-tc/story.txt
+story-step1 ./step1-tc/story.txt
