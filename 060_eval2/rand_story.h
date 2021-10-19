@@ -27,8 +27,14 @@ void appendChars(string_t * dest, const char * src, size_t srcLen);
 void appendStringT(string_t * dest, string_t * src);
 
 int checkBlank(char * line, ssize_t readLen);
-string_t * parseLine(char * line, ssize_t readLen, catarray_t * catArray);
-
+string_t * parseLine(char * line,
+                     ssize_t readLen,
+                     category_t * used,
+                     catarray_t * catArray);
+const char * parseBlank(char * blankStart,
+                        char * blankEnd,
+                        category_t * used,
+                        catarray_t * catArray);
 /* Step 2 */
 category_t initCategory();
 catarray_t * initCatArray();
@@ -39,7 +45,7 @@ char * getName(char * nameStart, char * colon);
 char * getWord(char * wordStart, char * wordEnd);
 void addCategory(catarray_t * catArray, char * name, char * word);
 category_t * getCategory(catarray_t * catArray, char * name);
-void appendCategory(category_t * category, char * word);
+void appendCategory(category_t * category, const char * word);
 void addNewCategory(catarray_t * catArray, char * name, char * word);
 
 /* Step 3 */

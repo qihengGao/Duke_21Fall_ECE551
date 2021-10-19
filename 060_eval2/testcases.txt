@@ -20,3 +20,5 @@ story-step2 ./step2-tc/words_noln.txt
 story-step2 ./step2-tc/null_keys.txt
 story-step2 ./step2-tc/null_vals.txt
 story-step2 ./step1-tc/empty.txt
+story-step3 ./step2-tc/words.txt ./step1-tc/story.txt
+story-step3 ./step2-tc/words.txt ./step1-tc/story2.txt

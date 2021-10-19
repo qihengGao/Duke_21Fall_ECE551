@@ -17,6 +17,7 @@ int main(int argc, char ** argv) {
   }
 
   string_t * parsedStory = initStringT();
+  category_t used = initCategory();
 
   char * line = NULL;
   size_t bufferSize = 0;
@@ -27,14 +28,14 @@ int main(int argc, char ** argv) {
               "The blank does not have matching closed underscore in the same line.\n");
       exit(EXIT_FAILURE);
     }
-    string_t * prunedLine = parseLine(line, readLen, NULL);
+    string_t * prunedLine = parseLine(line, readLen, &used, NULL);
     appendStringT(parsedStory, prunedLine);
     freeStringT(prunedLine);
   }
   free(line);
 
   printf("%s", parsedStory->content);
-
+  freeCategory(used);
   freeStringT(parsedStory);
   if (fclose(f) == EOF) {
     fprintf(stderr, "Cannot close file: %s", fileName);
