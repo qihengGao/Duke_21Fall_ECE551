@@ -27,3 +27,4 @@ story-step3 ./step2-tc/words.txt ./step1-tc/story2.txt
 story-step3 ./step2-tc/words.txt ./step1-tc/empty.txt
 story-step3 ./step2-tc/words.txt ./step1-tc/empty2.txt
 story-step3 ./step1-tc/empty.txt ./step1-tc/empty.txt
+story-step3 ./step2-tc/words_mixKey.txt ./step1-tc/story_numCharKey.txt
