@@ -27,7 +27,7 @@ void appendChars(string_t * dest, const char * src, size_t srcLen);
 void appendStringT(string_t * dest, string_t * src);
 
 int checkBlank(char * line, ssize_t readLen);
-string_t * parseBlank(char * line, ssize_t readLen, catarray_t * catArray);
+string_t * parseLine(char * line, ssize_t readLen, catarray_t * catArray);
 
 /* Step 2 */
 category_t initCategory();
@@ -44,4 +44,5 @@ void addNewCategory(catarray_t * catArray, char * name, char * word);
 
 /* Step 3 */
 catarray_t * getCatArray(char * catWordFile);
+string_t * getStory(char * storyTemplate, catarray_t * catArray);
 #endif

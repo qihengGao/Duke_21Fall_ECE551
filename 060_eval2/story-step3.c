@@ -7,6 +7,17 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "Usage: ./story-step3 category_words.txt story.txt\n");
     exit(EXIT_FAILURE);
   }
+
   char * catWordFile = argv[1];
   catarray_t * catArray = getCatArray(catWordFile);
+
+  char * storyTemplate = argv[2];
+  string_t * story = getStory(storyTemplate, catArray);
+
+  printf("%s", story->content);
+
+  freeStringT(story);
+  freeCatArray(catArray);
+
+  return EXIT_SUCCESS;
 }

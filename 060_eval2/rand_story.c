@@ -42,8 +42,9 @@ int checkBlank(char * line, ssize_t readLen) {
   return (count % 2 == 0) ? 1 : 0;
 }
 
-string_t * parseBlank(char * line, ssize_t readLen, catarray_t * catArray) {
+string_t * parseLine(char * line, ssize_t readLen, catarray_t * catArray) {
   string_t * result = initStringT();
+  category_t used = initCategory();
 
   char * start = line;
   char * end = line + readLen;
@@ -61,11 +62,13 @@ string_t * parseBlank(char * line, ssize_t readLen, catarray_t * catArray) {
     char * categoryStart = blankStart + 1;
     size_t categoryLen = blankEnd - blankStart - 1;
     char * category = strndup(categoryStart, categoryLen);
+
     const char * word = chooseWord(category, catArray);
     free(category);
     appendChars(result, word, strlen(word));
     start = blankEnd + 1;
   }
+  freeCategory(used);
   return result;
 }
 
@@ -174,4 +177,30 @@ catarray_t * getCatArray(char * catWordFile) {
   }
   free(line);
   return catArray;
+}
+
+string_t * getStory(char * storyTemplate, catarray_t * catArray) {
+  FILE * f = fopen(storyTemplate, "r");
+  if (f == NULL) {
+    fprintf(stderr, "File: %s does not exist.\n", storyTemplate);
+    exit(EXIT_FAILURE);
+  }
+
+  string_t * parsedStory = initStringT();
+
+  char * line = NULL;
+  size_t bufferSize = 0;
+  ssize_t readLen = 0;
+  while ((readLen = getline(&line, &bufferSize, f)) != -1) {
+    if (checkBlank(line, readLen) == 0) {
+      fprintf(stderr,
+              "The blank does not have matching closed underscore in the same line.\n");
+      exit(EXIT_FAILURE);
+    }
+    string_t * prunedLine = parseLine(line, readLen, catArray);
+    appendStringT(parsedStory, prunedLine);
+    freeStringT(prunedLine);
+  }
+  free(line);
+  return parsedStory;
 }
