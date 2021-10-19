@@ -8,9 +8,6 @@ int main(int argc, char ** argv) {
     exit(EXIT_FAILURE);
   }
   char * catWordFile = argv[1];
-  FILE * catWordStream = fopen(catWordFile, "r");
-  if (catWordStream == NULL) {
-    fprintf("Canot open file : %s.\n", catWordFile);
-  }
+  catarray_t * catArray = getCatArray(catWordFile);
   
 }

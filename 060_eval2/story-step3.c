@@ -7,4 +7,6 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "Usage: ./story-step3 category_words.txt story.txt\n");
     exit(EXIT_FAILURE);
   }
+  char * catWordFile = argv[1];
+  catarray_t * catArray = getCatArray(catWordFile);
 }

@@ -4,6 +4,7 @@
 
 #include "provided.h"
 
+/* Step 1 */
 string_t * initStringT() {
   string_t * result = malloc(sizeof(*result));
   result->content = malloc(sizeof(*result->content));
@@ -41,7 +42,7 @@ int checkBlank(char * line, ssize_t readLen) {
   return (count % 2 == 0) ? 1 : 0;
 }
 
-string_t * parseBlank(char * line, ssize_t readLen) {
+string_t * parseBlank(char * line, ssize_t readLen, catarray_t * catArray) {
   string_t * result = initStringT();
 
   char * start = line;
@@ -60,7 +61,7 @@ string_t * parseBlank(char * line, ssize_t readLen) {
     char * categoryStart = blankStart + 1;
     size_t categoryLen = blankEnd - blankStart - 1;
     char * category = strndup(categoryStart, categoryLen);
-    const char * word = chooseWord(category, NULL);
+    const char * word = chooseWord(category, catArray);
     free(category);
     appendChars(result, word, strlen(word));
     start = blankEnd + 1;
@@ -68,6 +69,7 @@ string_t * parseBlank(char * line, ssize_t readLen) {
   return result;
 }
 
+/* Step 2 */
 category_t initCategory() {
   category_t result = {.name = NULL, .words = NULL, .n_words = 0};
   return result;
@@ -144,4 +146,32 @@ void freeCatArray(catarray_t * catArray) {
   }
   free(catArray->arr);
   free(catArray);
+}
+
+/* Step 3 */
+catarray_t * getCatArray(char * catWordFile) {
+  FILE * f = fopen(catWordFile, "r");
+  if (f == NULL) {
+    fprintf(stderr, "Cannot oppen file: %s.\n", catWordFile);
+    exit(EXIT_FAILURE);
+  }
+
+  catarray_t * catArray = initCatArray();
+  char * line = NULL;
+  size_t bufferSize = 0;
+  ssize_t readLen = 0;
+  while ((readLen = getline(&line, &bufferSize, f)) != -1) {
+    char * colon = strchr(line, ':');
+    if (colon == NULL) {
+      fprintf(stderr, "Input line does not have the colon as a separator.\n");
+      exit(EXIT_FAILURE);
+    }
+    char * name = getName(line, colon);
+    char * word = getWord(colon + 1, line + readLen);
+    addCategory(catArray, name, word);
+    free(name);
+    free(word);
+  }
+  free(line);
+  return catArray;
 }
