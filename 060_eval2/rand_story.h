@@ -1,12 +1,15 @@
 #ifndef __RAND_STORY_H__
 #define __RAND_STORY_H__
 
+#include <stdio.h>
+
 #include "provided.h"
 /* Structs and functions that are used in this project. 
  * Please check rand_story.c for detatiled implementations and
  * documentation.
  */
 
+/* Step 1*/
 /* struct for storing
  * dynamically-sized string (char * content)
  * and its length (size_t).
@@ -26,6 +29,7 @@ void appendStringT(string_t * dest, string_t * src);
 int checkBlank(char * line, ssize_t readLen);
 string_t * parseBlank(char * line, ssize_t readLen);
 
+/* Step 2 */
 category_t initCategory();
 catarray_t * initCatArray();
 void freeCategory(category_t category);
@@ -37,4 +41,7 @@ void addCategory(catarray_t * catArray, char * name, char * word);
 category_t * getCategory(catarray_t * catArray, char * name);
 void appendCategory(category_t * category, char * word);
 void addNewCategory(catarray_t * catArray, char * name, char * word);
+
+/* Step 3 */
+category_t * getCatArray(FILE * catWordFile);
 #endif

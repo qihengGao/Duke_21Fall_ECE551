@@ -19,3 +19,4 @@ story-step2 ./step2-tc/duplicateVals.txt
 story-step2 ./step2-tc/words_noln.txt
 story-step2 ./step2-tc/null_keys.txt
 story-step2 ./step2-tc/null_vals.txt
+story-step2 ./step1-tc/empty.txt
