@@ -3,7 +3,7 @@ story-step1 ./step1-tc/e_mis1.txt
 story-step1 ./stpe1-tc/e_mis2.txt
 story-step1
 story-step1 nonExist.txt
-story1-step1 ./step1-tc/story.txt ./step1-tc/story2.txt
+story-step1 ./step1-tc/story.txt ./step1-tc/story2.txt
 #success
 story-step1 ./step1-tc/story.txt
 story-step1 ./step1-tc/story2.txt
