@@ -29,14 +29,17 @@ int main(int argc, char ** argv) {
       freeStringT(parsedStory);
       exit(EXIT_FAILURE);
     }
-    string_t * prunedLine = parseLine(line, readLen);
-    appendStringT(&parsedStory, prunedLine);
+    string_t * prunedLine = parseBlank(line, readLen);
+    appendStringT(parsedStory, prunedLine);
     freeStringT(prunedLine);
   }
   free(line);
-  fclose(f);
-  printf("%s", parsedStory->content);
-  freeStringT(parsedStory);
 
+  printf("%s", parsedStory->content);
+
+  freeStringT(parsedStory);
+  if (fclose(f) == EOF) {
+    fprintf(stderr, "Cannot close file: %s", fileName);
+  }
   return EXIT_SUCCESS;
 }
