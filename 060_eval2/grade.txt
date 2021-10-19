@@ -1,6 +1,6 @@
-Grading at 10/19/2021:01:37:53.134610
-For commit ID fa9e7302ee75347283cb7971ca011c5025fd6d4a
-Grading at Mon Oct 18 21:37:44 EDT 2021
+Grading at 10/19/2021:01:46:03.445637
+For commit ID 2375a44175d2af96a9015e206de0e1efecc0877a
+Grading at Mon Oct 18 21:45:49 EDT 2021
 Running your test cases
 
 Compiling story-step1
@@ -24,6 +24,29 @@ Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
 Test case story-step1 ./step1-tc/story.txt ./step1-tc/story2.txt
 Your program successfully indicated a failure case
+
+Compiling story-step2
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step2.c
+gcc -o story-step2 story-step2.o rand_story.o provided.o
+rm story-step2.o
++-----------------------------------------------------------------------+
+Test case story-step2 
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case story-step2 nonExist.txt
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case story-step2 ./step1-tc/story.txt ./step1-tc/story2.txt
+Your program successfully indicated a failure case
+
+Compiling story-step1
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c rand_story.c
+gcc -std=gnu99 -pedantic -Wall -Werror -ggdb3 -c story-step1.c
+gcc -o story-step1 story-step1.o rand_story.o provided.o
+rm story-step1.o
 +-----------------------------------------------------------------------+
 Test case story-step1 ./step1-tc/story.txt
 Your file matched the expected output
@@ -51,6 +74,18 @@ gcc -o story-step2 story-step2.o rand_story.o provided.o
 rm story-step2.o
 +-----------------------------------------------------------------------+
 Test case story-step2 ./step2-tc/words.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case story-step2 ./step2-tc/duplicateVals.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case story-step2 ./step2-tc/words_noln.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case story-step2 ./step2-tc/null_keys.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case story-step2 ./step2-tc/null_vals.txt
 Your file matched the expected output
 
 You have PASSED all of your test cases
