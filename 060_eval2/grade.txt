@@ -1,6 +1,6 @@
-Grading at 10/18/2021:20:17:01.061898
-For commit ID 38c2b5bda5e529d5f3f623e7c03cea4d1d0f7e9c
-Grading at Mon Oct 18 16:16:54 EDT 2021
+Grading at 10/19/2021:01:35:45.196955
+For commit ID 20cccb36ef3890c03f54f84688ecf024c0c1fa7b
+Grading at Mon Oct 18 21:35:42 EDT 2021
 Running your test cases
 
 Compiling story-step1
@@ -16,25 +16,12 @@ Your program successfully indicated a failure case
 Test case story-step1 ./stpe1-tc/e_mis2.txt
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case story-step1 ./step1-tc/story.txt
-Your file matched the expected output
+Test case story-step1 
+Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case story-step1 ./step1-tc/story2.txt
-Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case story-step1 ./step1-tc/oneline.txt
-Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case story-step1 ./step1-tc/singleton.txt
-Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case story-step1 ./step1-tc/empty.txt
-Your file matched the expected output
-+-----------------------------------------------------------------------+
-Test case story-step1 ./step1-tc/empty2.txt
-Your file matched the expected output
-
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+Test case story-step1 nonExist.txt
+Your program successfully indicated a failure case
+Program must be one of story-step1 story-step2 story-step3 story-step4
+But found "story1-step1"
 
 Overall Grade: NO GRADE YET
