@@ -83,7 +83,7 @@ char * parseBlank(char * blankStart,
   char * endPtr = NULL;
   size_t number = strtoull(category, &endPtr, 10);
 
-  if (*endPtr == '\0') {
+  if (categoryLen != 0 && *endPtr == '\0') {
     if (number <= 0 || number > used->n_words) {
       fprintf(stderr, "Number is not valid.\n");
       exit(EXIT_FAILURE);

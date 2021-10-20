@@ -31,4 +31,5 @@ story-step3 ./step1-tc/empty.txt ./step1-tc/empty.txt
 story-step3 ./step2-tc/words_mixKey.txt ./step1-tc/story_numCharKey.txt
 story-step4 -n ./step2-tc/words.txt ./step1-tc/story.txt
 story-step4 -n ./step2-tc/words.txt ./step1-tc/story2.txt
+story-step4 ./step2-tc/null_keys.txt ./step1-tc/storyWith__.txt
 

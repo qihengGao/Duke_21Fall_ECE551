@@ -4,3 +4,7 @@
 adjective:peculiar
 adjective:scary
 adjective:peaceful
+animal:dragon
+animal:bird
+place:hometown
+place:duke
