@@ -9,15 +9,8 @@ int main(int argc, char ** argv) {
   }
 
   char * catWordFile = argv[1];
-  catarray_t * catArray = getCatArray(catWordFile);
-
   char * storyTemplate = argv[2];
-  string_t * story = getStory(storyTemplate, catArray);
-
-  printf("%s", story->content);
-
-  freeStringT(story);
-  freeCatArray(catArray);
+  tellStory(catWordFile, storyTemplate, 1);
 
   return EXIT_SUCCESS;
 }

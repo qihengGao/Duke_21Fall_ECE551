@@ -45,7 +45,8 @@ int checkBlank(char * line, ssize_t readLen) {
 string_t * parseLine(char * line,
                      ssize_t readLen,
                      category_t * used,
-                     catarray_t * catArray) {
+                     catarray_t * catArray,
+                     int reused) {
   string_t * result = initStringT();
 
   char * start = line;
@@ -61,7 +62,7 @@ string_t * parseLine(char * line,
       appendChars(result, start, blankStart - start);
     }
     char * blankEnd = strchr(blankStart + 1, '_');
-    const char * word = parseBlank(blankStart, blankEnd, used, catArray);
+    const char * word = parseBlank(blankStart, blankEnd, used, catArray, reused);
     appendCategory(used, word);
     appendChars(result, word, strlen(word));
     start = blankEnd + 1;
@@ -72,9 +73,9 @@ string_t * parseLine(char * line,
 const char * parseBlank(char * blankStart,
                         char * blankEnd,
                         category_t * used,
-                        catarray_t * catArray) {
+                        catarray_t * catArray,
+                        int reused) {
   const char * word = NULL;
-
   char * categoryStart = blankStart + 1;
   size_t categoryLen = blankEnd - blankStart - 1;
   char * category = strndup(categoryStart, categoryLen);
@@ -93,7 +94,11 @@ const char * parseBlank(char * blankStart,
       fprintf(stderr, "%s is not a valid category.\n", category);
       exit(EXIT_FAILURE);
     }
-    word = chooseWord(category, catArray);
+    const char * chosenWord = chooseWord(category, catArray);
+    word = strdup(chosenWord);
+    if (reused == 0) {
+      removeWord(catArray, category, chosenWord);
+    }
   }
 
   free(category);
@@ -139,6 +144,28 @@ void addCategory(catarray_t * catArray, char * name, char * word) {
   }
 }
 
+void removeWord(catarray_t * catArray, char * name, const char * word) {
+  category_t * category = getCategory(catArray, name);
+  size_t idxOfDel = locateWord(category, word);
+  char * ptrToDel = category->words[idxOfDel];
+  free(ptrToDel);
+  for (size_t i = idxOfDel; i < category->n_words - 1; i++) {
+    category->words[i] = category->words[i + 1];
+  }
+  category->n_words--;
+}
+
+size_t locateWord(category_t * category, const char * word) {
+  size_t result = 0;
+  for (size_t i = 0; i < category->n_words; i++) {
+    if (strcmp(category->words[i], word) == 0) {
+      result = i;
+      return result;
+    }
+  }
+  return result;
+}
+
 category_t * getCategory(catarray_t * catArray, char * name) {
   for (size_t i = 0; i < catArray->n; i++) {
     if (strcmp(name, catArray->arr[i].name) == 0) {
@@ -180,6 +207,16 @@ void freeCatArray(catarray_t * catArray) {
 }
 
 /* Step 3 */
+void tellStory(char * catWordFile, char * storyTemplate, int reused) {
+  catarray_t * catArray = getCatArray(catWordFile);
+  string_t * story = getStory(storyTemplate, catArray, reused);
+
+  printf("%s", story->content);
+
+  freeStringT(story);
+  freeCatArray(catArray);
+}
+
 catarray_t * getCatArray(char * catWordFile) {
   FILE * f = fopen(catWordFile, "r");
   if (f == NULL) {
@@ -211,7 +248,7 @@ catarray_t * getCatArray(char * catWordFile) {
   return catArray;
 }
 
-string_t * getStory(char * storyTemplate, catarray_t * catArray) {
+string_t * getStory(char * storyTemplate, catarray_t * catArray, int reused) {
   FILE * f = fopen(storyTemplate, "r");
   if (f == NULL) {
     fprintf(stderr, "File: %s does not exist.\n", storyTemplate);
@@ -230,7 +267,7 @@ string_t * getStory(char * storyTemplate, catarray_t * catArray) {
               "The blank does not have matching closed underscore in the same line.\n");
       exit(EXIT_FAILURE);
     }
-    string_t * prunedLine = parseLine(line, readLen, &used, catArray);
+    string_t * prunedLine = parseLine(line, readLen, &used, catArray, reused);
     appendStringT(parsedStory, prunedLine);
     freeStringT(prunedLine);
   }

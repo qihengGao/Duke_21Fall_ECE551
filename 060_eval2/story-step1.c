@@ -28,7 +28,7 @@ int main(int argc, char ** argv) {
               "The blank does not have matching closed underscore in the same line.\n");
       exit(EXIT_FAILURE);
     }
-    string_t * prunedLine = parseLine(line, readLen, &used, NULL);
+    string_t * prunedLine = parseLine(line, readLen, &used, NULL, 1);
     appendStringT(parsedStory, prunedLine);
     freeStringT(prunedLine);
   }

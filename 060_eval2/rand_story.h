@@ -30,11 +30,13 @@ int checkBlank(char * line, ssize_t readLen);
 string_t * parseLine(char * line,
                      ssize_t readLen,
                      category_t * used,
-                     catarray_t * catArray);
+                     catarray_t * catArray,
+                     int reused);
 const char * parseBlank(char * blankStart,
                         char * blankEnd,
                         category_t * used,
-                        catarray_t * catArray);
+                        catarray_t * catArray,
+                        int reused);
 /* Step 2 */
 category_t initCategory();
 catarray_t * initCatArray();
@@ -44,11 +46,16 @@ void freeCatArray(catarray_t * catArray);
 char * getName(char * nameStart, char * colon);
 char * getWord(char * wordStart, char * wordEnd);
 void addCategory(catarray_t * catArray, char * name, char * word);
+void removeWord(catarray_t * catArray, char * name, const char * word);
+size_t locateWord(category_t * category, const char * word);
 category_t * getCategory(catarray_t * catArray, char * name);
 void appendCategory(category_t * category, const char * word);
 void addNewCategory(catarray_t * catArray, char * name, char * word);
 
 /* Step 3 */
 catarray_t * getCatArray(char * catWordFile);
-string_t * getStory(char * storyTemplate, catarray_t * catArray);
+string_t * getStory(char * storyTemplate, catarray_t * catArray, int reused);
+
+/* Step 4 */
+void tellStory(char * catWordFile, char * storyTemplate, int reused);
 #endif
