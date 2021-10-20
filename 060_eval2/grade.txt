@@ -1,6 +1,6 @@
-Grading at 10/20/2021:14:13:21.816691
-For commit ID 999a83b0c9536be1b7aa0fb33bb204b47114f6b5
-Grading at Wed Oct 20 10:12:58 EDT 2021
+Grading at 10/20/2021:14:22:32.556276
+For commit ID c0e6fb4336226adc1cfdd7caf10a34069541c7c2
+Grading at Wed Oct 20 10:22:07 EDT 2021
 Running your test cases
 
 Compiling story-step1
@@ -62,6 +62,12 @@ gcc -o story-step4 story-step4.o rand_story.o provided.o
 rm story-step4.o
 +-----------------------------------------------------------------------+
 Test case story-step4 ./step2-tc/words.txt ./step1-tc/story2_numOut.txt
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case story-step4 ./step2-tc/words.txt ./step1-tc/story2_noECat.txt
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case story-step4 ./step2-tc/words.txt ./step1-tc/story2_nooutCat.txt
 Your program successfully indicated a failure case
 
 Compiling story-step1
