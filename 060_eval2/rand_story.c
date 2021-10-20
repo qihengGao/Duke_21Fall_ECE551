@@ -98,7 +98,7 @@ string_t * parseLine(char * line,
     char * blankStart = strchr(start, '_');
 
     /* If there is no blank left,
-     *  then just append the rest line to the result and return.
+     * then just append the rest line to the result and return.
      */
     if (blankStart == NULL) {
       appendChars(result, start, strlen(start));
