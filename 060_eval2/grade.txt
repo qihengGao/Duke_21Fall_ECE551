@@ -1,6 +1,6 @@
-Grading at 10/20/2021:01:48:03.394771
-For commit ID 0d12c5397239d7a4f2d6b5bcf79b29db7eec209a
-Grading at Tue Oct 19 21:47:39 EDT 2021
+Grading at 10/20/2021:02:15:14.716230
+For commit ID 21950b2d1c1a165a86b55773cc6882dcc7c51e29
+Grading at Tue Oct 19 22:14:51 EDT 2021
 Running your test cases
 
 Compiling story-step1
@@ -62,16 +62,16 @@ gcc -o story-step1 story-step1.o rand_story.o provided.o
 rm story-step1.o
 +-----------------------------------------------------------------------+
 Test case story-step1 ./step1-tc/story.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step1 ./step1-tc/story2.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step1 ./step1-tc/oneline.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step1 ./step1-tc/singleton.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step1 ./step1-tc/empty.txt
 Your file matched the expected output
@@ -112,13 +112,13 @@ gcc -o story-step3 story-step3.o rand_story.o provided.o
 rm story-step3.o
 +-----------------------------------------------------------------------+
 Test case story-step3 ./step2-tc/words.txt ./step1-tc/story.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step3 ./step2-tc/words.txt ./step1-tc/story2.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step3 ./step2-tc/words.txt ./step1-tc/story2_0prefix.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step3 ./step2-tc/words.txt ./step1-tc/empty.txt
 Your file matched the expected output
@@ -130,7 +130,7 @@ Test case story-step3 ./step1-tc/empty.txt ./step1-tc/empty.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step3 ./step2-tc/words_mixKey.txt ./step1-tc/story_numCharKey.txt
-Valgrind reported memory errors
+Your file matched the expected output
 
 Compiling story-step4
 rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
@@ -140,12 +140,12 @@ gcc -o story-step4 story-step4.o rand_story.o provided.o
 rm story-step4.o
 +-----------------------------------------------------------------------+
 Test case story-step4 -n ./step2-tc/words.txt ./step1-tc/story.txt
-Valgrind reported memory errors
+Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step4 -n ./step2-tc/words.txt ./step1-tc/story2.txt
-Valgrind reported memory errors
+Your file matched the expected output
 
-You have FAILED one or more of your test cases
-Keep debugging
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
