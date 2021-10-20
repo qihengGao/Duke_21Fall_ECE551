@@ -10,6 +10,8 @@ story-step2 ./step1-tc/story.txt ./step1-tc/story2.txt
 story-step3 ./step1-tc/empty.txt ./step1-tc/story.txt
 story-step3 ./step1-tc/story.txt ./step1-tc/story.txt
 story-step4 ./step2-tc/words.txt ./step1-tc/story2_numOut.txt
+story-step4 ./step2-tc/words.txt ./step1-tc/story2_noECat.txt
+story-step4 ./step2-tc/words.txt ./step1-tc/story2_nooutCat.txt
 #success
 story-step1 ./step1-tc/story.txt
 story-step1 ./step1-tc/story2.txt
