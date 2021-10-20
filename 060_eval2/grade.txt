@@ -1,6 +1,6 @@
-Grading at 10/20/2021:02:15:14.716230
-For commit ID 21950b2d1c1a165a86b55773cc6882dcc7c51e29
-Grading at Tue Oct 19 22:14:51 EDT 2021
+Grading at 10/20/2021:14:05:38.736861
+For commit ID fef32e28d31be9676d35a0297b2a4845e97eb630
+Grading at Wed Oct 20 10:05:15 EDT 2021
 Running your test cases
 
 Compiling story-step1
@@ -143,6 +143,9 @@ Test case story-step4 -n ./step2-tc/words.txt ./step1-tc/story.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case story-step4 -n ./step2-tc/words.txt ./step1-tc/story2.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case story-step4 ./step2-tc/null_keys.txt ./step1-tc/storyWith__.txt
 Your file matched the expected output
 
 You have PASSED all of your test cases
