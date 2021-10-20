@@ -62,20 +62,21 @@ string_t * parseLine(char * line,
       appendChars(result, start, blankStart - start);
     }
     char * blankEnd = strchr(blankStart + 1, '_');
-    const char * word = parseBlank(blankStart, blankEnd, used, catArray, reused);
+    char * word = parseBlank(blankStart, blankEnd, used, catArray, reused);
     appendCategory(used, word);
     appendChars(result, word, strlen(word));
     start = blankEnd + 1;
+    free(word);
   }
   return result;
 }
 
-const char * parseBlank(char * blankStart,
-                        char * blankEnd,
-                        category_t * used,
-                        catarray_t * catArray,
-                        int reused) {
-  const char * word = NULL;
+char * parseBlank(char * blankStart,
+                  char * blankEnd,
+                  category_t * used,
+                  catarray_t * catArray,
+                  int reused) {
+  char * word = NULL;
   char * categoryStart = blankStart + 1;
   size_t categoryLen = blankEnd - blankStart - 1;
   char * category = strndup(categoryStart, categoryLen);
@@ -87,7 +88,7 @@ const char * parseBlank(char * blankStart,
       fprintf(stderr, "Number is not valid.\n");
       exit(EXIT_FAILURE);
     }
-    word = used->words[used->n_words - number];
+    word = strdup(used->words[used->n_words - number]);
   }
   else {
     if (catArray != NULL && !getCategory(catArray, category)) {
@@ -147,6 +148,9 @@ void addCategory(catarray_t * catArray, char * name, char * word) {
 void removeWord(catarray_t * catArray, char * name, const char * word) {
   category_t * category = getCategory(catArray, name);
   size_t idxOfDel = locateWord(category, word);
+  if (idxOfDel == category->n_words) {
+    return;
+  }
   char * ptrToDel = category->words[idxOfDel];
   free(ptrToDel);
   for (size_t i = idxOfDel; i < category->n_words - 1; i++) {

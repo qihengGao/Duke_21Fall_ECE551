@@ -32,11 +32,11 @@ string_t * parseLine(char * line,
                      category_t * used,
                      catarray_t * catArray,
                      int reused);
-const char * parseBlank(char * blankStart,
-                        char * blankEnd,
-                        category_t * used,
-                        catarray_t * catArray,
-                        int reused);
+char * parseBlank(char * blankStart,
+                  char * blankEnd,
+                  category_t * used,
+                  catarray_t * catArray,
+                  int reused);
 /* Step 2 */
 category_t initCategory();
 catarray_t * initCatArray();
