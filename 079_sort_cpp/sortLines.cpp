@@ -1,0 +1,47 @@
+#include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <vector>
+
+void sortLine(std::istream & is);
+
+int main(int argc, char ** argv) {
+  if (argc < 1) {
+    std::cerr << "Usage Eror." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  if (argc == 1) {
+    sortLine(std::cin);
+  }
+  else {
+    for (int i = 1; i < argc; i++) {
+      std::ifstream f(argv[i]);
+      if (!f) {
+        std::cerr << "Cannot open file." << std::endl;
+        exit(EXIT_FAILURE);
+      }
+      sortLine(f);
+      f.close();
+    }
+  }
+
+  return EXIT_SUCCESS;
+}
+
+void sortLine(std::istream & is) {
+  std::string readIn;
+  std::vector<std::string> toSort;
+  while (getline(is, readIn)) {
+    toSort.push_back(readIn);
+  }
+  if (!is.eof()) {
+    std::cerr << "Having trouble in reading line." << std::endl;
+  }
+  std::sort(toSort.begin(), toSort.end());
+  typename std::vector<std::string>::const_iterator it = toSort.begin();
+  while (it != toSort.end()) {
+    std::cout << *it << std::endl;
+    ++it;
+  }
+}
