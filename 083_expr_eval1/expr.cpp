@@ -6,8 +6,42 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 
 Expression * parse(const char ** strp);
+
+NumExpression::NumExpression(long num) : num(num) {
+}
+
+std::string NumExpression::toString() const {
+  std::stringstream result;
+  result << this->num;
+  return result.str();
+}
+
+OperatorExpression::OperatorExpression(Expression * lhs,
+                                       Expression * rhs,
+                                       std::string op) :
+    lhs(lhs),
+    rhs(rhs),
+    op(op) {
+}
+
+std::string OperatorExpression::toString() const {
+  std::stringstream expression;
+  expression << '(' << this->lhs->toString() << ' ' << this->op << ' '
+             << this->rhs->toString() << ')';
+  return expression.str();
+}
+
+OperatorExpression::~OperatorExpression() {
+  delete lhs;
+  delete rhs;
+}
+
+PlusExpression::PlusExpression(Expression * lhs, Expression * rhs) :
+    OperatorExpression(lhs, rhs, "+") {
+}
 
 void skipSpace(const char ** strp) {
   while (isspace(**strp)) {
