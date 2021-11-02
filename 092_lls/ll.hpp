@@ -88,6 +88,18 @@ void LinkedList<T>::addFront(const T & val) {
 }
 
 template<typename T>
+void LinkedList<T>::addBack(const T & val) {
+  tail = new Node(tail, val, NULL);
+  if (head == NULL) {
+    head = tail;
+  }
+  else {
+    this->tail->prev->next = this->tail;
+  }
+  size++;
+}
+
+template<typename T>
 bool LinkedList<T>::remove(const T & val) {
   Node ** curr = &(this->head);
   while (*curr != NULL) {
