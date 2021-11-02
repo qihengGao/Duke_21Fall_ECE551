@@ -100,30 +100,66 @@ void LinkedList<T>::addBack(const T & val) {
 }
 
 template<typename T>
-bool LinkedList<T>::remove(const T & val) {
-  Node ** curr = &(this->head);
-  while (*curr != NULL) {
-    if ((*curr)->data != val) {
-      curr = &((*curr)->next);
-    }
-    else {
-      Node * toDel = *curr;
-      *curr = (*curr)->next;
-      // head or midlle
-      if (toDel->next != NULL) {
-        toDel->next->prev = toDel->prev;
-      }
-      // tail
-      if (toDel->next == NULL) {
-        this->tail = toDel->prev;
-      }
-      delete toDel;
-      this->size--;
-      return true;
-    }
+bool LinkedList<T>::remove(const T & item) {
+  if (head == NULL) {
+    return false;
   }
-  return false;
+  else {
+    Node * p = head;
+    while (p != NULL) {
+      if (p->data != item) {
+        p = p->next;
+      }
+      else {
+        if (head == tail && tail == p) {
+          head = tail = NULL;
+        }
+        else if (tail == p) {
+          tail = p->prev;
+          tail->next = NULL;
+        }
+        else if (head == p) {
+          head = p->next;
+          head->prev = NULL;
+        }
+        else {
+          p->prev->next = p->next;
+          p->next->prev = p->prev;
+        }
+        delete p;
+        size--;
+        return true;
+      }
+    }
+    return false;
+  }
 }
+
+// template<typename T>
+// bool LinkedList<T>::remove(const T & val) {
+//   Node ** curr = &(this->head);
+//   while (*curr != NULL) {
+//     if ((*curr)->data != val) {
+//       curr = &((*curr)->next);
+//     }
+//     else {
+//       Node * toDel = *curr;
+//       *curr = (*curr)->next;
+//       // head or midlle
+//       if (toDel->next != NULL) {
+//         toDel->next->prev = toDel->prev;
+//       }
+//       // tail
+//       if (toDel->next == NULL) {
+//         this->tail = toDel->prev;
+//       }
+//       delete toDel;
+//       this->size--;
+//       return true;
+//     }
+//   }
+//   return false;
+// }
 
 template<typename T>
 T & LinkedList<T>::operator[](int i) {
