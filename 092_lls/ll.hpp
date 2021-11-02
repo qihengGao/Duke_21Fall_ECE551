@@ -35,13 +35,14 @@ class LinkedList {
   const T & operator[](int i) const;
   int find(const T & val);
   int getSize() const;
+  friend class Tester;
 };
 
 template<typename T>
 LinkedList<T>::LinkedList(const LinkedList<T> & rhs) {
   head = NULL;
   tail = NULL;
-  this->size = rhs.size;
+  this->size = 0;
   Node * curr = rhs.head;
   while (curr != NULL) {
     addBack(curr->data);
