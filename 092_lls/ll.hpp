@@ -54,6 +54,8 @@ class LinkedList {
       delete head;
       head = next;
     }
+    head = NULL;
+    tail = NULL;
   }
   void addFront(const T & val) {
     head = new Node(NULL, val, this->head);
