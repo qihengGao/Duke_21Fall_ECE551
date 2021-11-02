@@ -25,38 +25,10 @@ class LinkedList {
 
  public:
   LinkedList() : head(NULL), tail(NULL), size(0) {}
+  LinkedList(const LinkedList<T> & rhs);
+  LinkedList<T> & operator=(const LinkedList<T> & rhs);
+  ~LinkedList();
 
-  LinkedList(const LinkedList<T> & rhs) : head(NULL), tail(NULL), size(rhs.size) {
-    Node * curr = rhs.head;
-    while (curr != NULL) {
-      this->addBack(curr->data);
-      curr = curr->next;
-    }
-  }
-
-  LinkedList<T> & operator=(const LinkedList<T> & rhs) {
-    if (this != &rhs) {
-      LinkedList<T> temp(rhs);
-      Node * thisHead = this->head;
-      this->head = temp.head;
-      temp.head = thisHead;
-      Node * thisTail = this->tail;
-      this->tail = temp.tail;
-      temp.tail = thisTail;
-      size = temp.size;
-    }
-    return *this;
-  }
-
-  ~LinkedList() {
-    while (head != NULL) {
-      Node * next = head->next;
-      delete head;
-      head = next;
-    }
-    head = NULL;
-    tail = NULL;
-  }
   void addFront(const T & val) {
     head = new Node(NULL, val, this->head);
     if (this->tail == NULL) {
@@ -153,4 +125,38 @@ class LinkedList {
   int getSize() const { return this->size; }
 };
 
+template<typename T>
+LinkedList<T>::LinkedList(const LinkedList<T> & rhs) {
+  Node * curr = rhs.head;
+  while (curr != NULL) {
+    addBack(curr->data);
+    curr = curr->next;
+  }
+}
+
+template<typename T>
+LinkedList<T>::~LinkedList() {
+  while (head != NULL) {
+    Node * next = head->next;
+    delete head;
+    head = next;
+  }
+  head = NULL;
+  tail = NULL;
+}
+
+template<typename T>
+LinkedList<T> & LinkedList<T>::operator=(const LinkedList<T> & rhs) {
+  if (this != &rhs) {
+    LinkedList<T> temp(rhs);
+    Node * thisHead = this->head;
+    this->head = temp.head;
+    temp.head = thisHead;
+    Node * thisTail = this->tail;
+    this->tail = temp.tail;
+    temp.tail = thisTail;
+    size = temp.size;
+  }
+  return *this;
+}
 #endif
