@@ -60,7 +60,7 @@ typename BstMap<K, V>::Node * BstMap<K, V>::copy(const Node * curr) {
     return NULL;
   Node * node = new Node(curr->key, curr->value);
   node->left = copy(curr->left);
-  node->right = copy(curr->left);
+  node->right = copy(curr->right);
   return node;
 }
 
