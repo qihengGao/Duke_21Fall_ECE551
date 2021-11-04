@@ -107,7 +107,7 @@ template<typename K, typename V>
 const V & BstMap<K, V>::lookup(const K & key) const throw(std::invalid_argument) {
   Node ** toRet = getNode(key);
   if (*toRet == NULL) {
-    throw std::invalid_argument("Key Error.\n");
+    throw std::invalid_argument("Key Error.");
   }
   return (*toRet)->value;
 }
