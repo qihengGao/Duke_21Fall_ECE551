@@ -1,0 +1,7 @@
+#include <cstdio>
+#include <cstdlib>
+
+#include "bstset.h"
+
+int main() {
+}
