@@ -1,173 +1,68 @@
-Grading at 11/04/2021:17:12:07.695230
-For commit ID acde1eaa0854fb41b367eba30f1b9ad2a594f7c9
-Grading at Thu Nov  4 13:11:55 EDT 2021
+Grading at 11/04/2021:17:48:25.991924
+For commit ID 305ff34e80cb7eb4747ca721a9444f5831bf4f8a
+Grading at Thu Nov  4 13:48:15 EDT 2021
 -----------------------------------------------
 testcase 1 : Testing with BstMap<int,int>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_72_did_not_match
-Line_76_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_88_did_not_match
-Line_100_did_not_match
-Line_104_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 2 : Testing with BstMap<int,std::string>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_72_did_not_match
-Line_76_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_88_did_not_match
-Line_100_did_not_match
-Line_104_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 3 : Testing with BstMap<int,(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_72_did_not_match
-Line_76_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_88_did_not_match
-Line_100_did_not_match
-Line_104_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 4 : Testing with BstMap<std::string,int>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_74_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_86_did_not_match
-Line_90_did_not_match
-Line_102_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 5 : Testing with BstMap<std::string,std::string>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_74_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_86_did_not_match
-Line_90_did_not_match
-Line_102_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 6 : Testing with BstMap<std::string,(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_74_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_86_did_not_match
-Line_90_did_not_match
-Line_102_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 7 : Testing with BstMap<(a custom class we wrote),int>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_72_did_not_match
-Line_76_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_88_did_not_match
-Line_100_did_not_match
-Line_104_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 8 : Testing with BstMap<(a custom class we wrote),std::string>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_72_did_not_match
-Line_76_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_88_did_not_match
-Line_100_did_not_match
-Line_104_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 9 : Testing with BstMap<(a custom class we wrote),(a custom class we wrote)>
 ...compiling...
 The code compiled.
   - Valgrind was clean (no errors, no memory leaks)
-Line_72_did_not_match
-Line_76_did_not_match
-Line_78_did_not_match
-Line_84_did_not_match
-Line_88_did_not_match
-Line_100_did_not_match
-Line_104_did_not_match
-Line_106_did_not_match
-Line_112_did_not_match
-Line_126_did_not_match
-Line_130_did_not_match
-Line_134_did_not_match
-Your file did not match the expected output
-Testcase failed 
+Your file matched the expected output
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
