@@ -25,9 +25,19 @@ int main() {
     bstmap.remove(9);
     bstmap.remove(111);
     bstmap.lookup(120);
+
+    BstMap<int, int> map2(bstmap);
+    map2.add(111, 2);
+    bstmap.lookup(111);
+    assert(map2.lookup(111) == 2);
+
+    map2 = bstmap;
+    assert(&map2 != &bstmap);
+
+    BstMap<int, int> map3 = map2;
   }
   catch (std::exception & e) {
-    std::cout << e.what() << std::endl;
+    std::cerr << e.what() << std::endl;
   }
   return EXIT_SUCCESS;
 }
