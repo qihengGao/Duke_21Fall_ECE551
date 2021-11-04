@@ -98,7 +98,7 @@ void BstSet<T>::add(const T & key) {
 template<typename T>
 bool BstSet<T>::contains(const T & key) const {
   Node ** toRet = getNode(key);
-  return (toRet != NULL);
+  return (*toRet != NULL);
 }
 
 // remove
