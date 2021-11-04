@@ -19,9 +19,9 @@ class BstSet : public Set<T> {
   BstSet() : root(NULL) {}
   BstSet(const BstSet<T> & rhs);
   BstSet<T> & operator=(const BstSet<T> & rhs);
-  virtual ~BstSet();
+  virtual ~BstSet<T>();
   virtual void add(const T & key);
-  virtual bool contains(const T & key);
+  virtual bool contains(const T & key) const;
   virtual void remove(const T & key);
 };
 
@@ -71,7 +71,7 @@ BstSet<T> & BstSet<T>::operator=(const BstSet<T> & rhs) {
 
 // destructor
 template<typename T>
-BstSet<T>::~BstSet() {
+BstSet<T>::~BstSet<T>() {
   destroy(this->root);
 }
 
@@ -96,7 +96,7 @@ void BstSet<T>::add(const T & key) {
 
 // contains
 template<typename T>
-bool BstSet<T>::contains(const T & key) {
+bool BstSet<T>::contains(const T & key) const {
   Node ** toRet = getNode(key);
   return (toRet != NULL);
 }
