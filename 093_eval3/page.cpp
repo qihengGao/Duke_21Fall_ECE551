@@ -177,7 +177,7 @@ void Page::printPage() {
   if (this->isWin()) {
     std::cout << "Congratulations! You have won. Hooray!" << std::endl;
   }
-  /* Lost Page. */
+  /* Lose Page. */
   else if (this->isLose()) {
     std::cout << "Sorry, you have lost. Better luck next time!" << std::endl;
   }
