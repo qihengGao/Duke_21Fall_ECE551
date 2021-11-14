@@ -27,7 +27,8 @@ uint64_t * readFrequencies(const char * fname) {
   uint64_t * result = new uint64_t[257]();
   char readIn;
   while (file.get(readIn)) {
-    result[(unsigned int)readIn]++;
+    result[(unsigned char)readIn]++;
   }
+  result[256] = 1;
   return result;
 }
