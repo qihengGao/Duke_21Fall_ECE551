@@ -1,6 +1,6 @@
-Grading at 11/15/2021:18:44:41.431524
-For commit ID a6c09de1845b2b9c66037b012ab73606cd96f399
-Grading at Mon Nov 15 13:44:31 EST 2021
+Grading at 11/15/2021:18:46:36.343197
+For commit ID 752c7025bf34558e8deeea3f210cde65a2037dbd
+Grading at Mon Nov 15 13:46:21 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -57,6 +57,30 @@ rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o c
 The code did not compile!
 Did not compile for step 4
 Running your test cases
-Cannot proceed without testcases.txt
+
+Compiling cyoa-step1
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step1.cpp
+g++ -o cyoa-step1 cyoa-step1.o page.o
+rm cyoa-step1.o
++-----------------------------------------------------------------------+
+Test case 1 (error): cyoa-step1 ./story1/page82.txt
+Your program successfully indicated a failure case
++-----------------------------------------------------------------------+
+Test case 2 (error): cyoa-step1 ./story1/page83.txt
+Our cyoa-step1 does not consider this an error case
++-----------------------------------------------------------------------+
+Test case 3 (success): cyoa-step1 ./story1/page1.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case 4 (success): cyoa-step1 ./story1/page81.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case 5 (success): cyoa-step1 ./story1/page84.txt
+Your file matched the expected output
+
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
