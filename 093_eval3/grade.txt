@@ -1,6 +1,6 @@
-Grading at 11/15/2021:18:46:36.343197
-For commit ID 752c7025bf34558e8deeea3f210cde65a2037dbd
-Grading at Mon Nov 15 13:46:21 EST 2021
+Grading at 11/15/2021:18:52:02.469547
+For commit ID 11708425459a538cb0d2c0d4bef6b845cdb34277
+Grading at Mon Nov 15 13:51:47 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -68,19 +68,19 @@ rm cyoa-step1.o
 Test case 1 (error): cyoa-step1 ./story1/page82.txt
 Your program successfully indicated a failure case
 +-----------------------------------------------------------------------+
-Test case 2 (error): cyoa-step1 ./story1/page83.txt
-Our cyoa-step1 does not consider this an error case
-+-----------------------------------------------------------------------+
-Test case 3 (success): cyoa-step1 ./story1/page1.txt
+Test case 2 (success): cyoa-step1 ./story1/page1.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 4 (success): cyoa-step1 ./story1/page81.txt
+Test case 3 (success): cyoa-step1 ./story1/page81.txt
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case 4 (success): cyoa-step1 ./story1/page83.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
 Test case 5 (success): cyoa-step1 ./story1/page84.txt
 Your file matched the expected output
 
-You have FAILED one or more of your test cases
-Keep debugging
+You have PASSED all of your test cases
+Keep adding test cases until you are satisfied your program is correct
 
 Overall Grade: NO GRADE YET
