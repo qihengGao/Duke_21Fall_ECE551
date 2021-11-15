@@ -62,9 +62,8 @@ void Page::parsePage(const std::string & fileName) {
     std::cerr << "Have trouble in reading " << fileName << std::endl;
     exit(EXIT_FAILURE);
   }
-  /* Check if text is present and if choice is present in normal navigation page. */
-  if (this->text.empty() ||
-      (!this->isWinPage && !this->isLosePage && this->choices.empty())) {
+  /* Check if choice is present in normal navigation page. */
+  if (!this->isWinPage && !this->isLosePage && this->choices.empty()) {
     std::cerr << "Contents miss in " << fileName << std::endl;
     exit(EXIT_FAILURE);
   }

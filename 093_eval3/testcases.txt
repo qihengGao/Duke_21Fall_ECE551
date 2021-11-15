@@ -1,8 +1,8 @@
 #error
 cyoa-step1 ./story1/page82.txt
-cyoa-step1 ./story1/page83.txt
 
 #success
 cyoa-step1 ./story1/page1.txt
 cyoa-step1 ./story1/page81.txt
+cyoa-step1 ./story1/page83.txt
 cyoa-step1 ./story1/page84.txt
