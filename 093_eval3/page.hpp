@@ -29,7 +29,6 @@ class Page {
   /* private methods of  parsing input for object construction. */
   void parsePage(const std::string & fileName);
   void parseChoice(const std::string & readIn);
-  size_t parsePageNum(const std::string & pageStr);
 
  public:
   Page() : pageNum(-1), isWinPage(false), isLosePage(false) {}

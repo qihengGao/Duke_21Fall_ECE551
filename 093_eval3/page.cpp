@@ -7,6 +7,34 @@
 #include <ostream>
 #include <sstream>
 
+/* parseNextpage takes a string of nextPageNumber and return a number in size_t.
+ * indicates and exits if any error occurs.
+ * @param nextPageStr, a string of nextPageNumber
+ */
+size_t parsePageNum(const std::string & pageNumStr) {
+  if (pageNumStr.length() == 0) {
+    std::cerr << "Page number is not present." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  if (pageNumStr.find("-") != 0) {
+    std::cerr << "Contains negative sign." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  std::istringstream builder(pageNumStr);
+  size_t pageNumber;
+  builder >> pageNumber;
+  if (!builder.eof()) {
+    std::cerr << pageNumStr << " Cannot convert entirely to a size_t number."
+              << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  if (pageNumber <= 0) {
+    std::cerr << "Next Page Number should be strictly greater than 0." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+  return pageNumber;
+}
+
 /* parsePage parses the text given in the file named 'fileName'
  * and modifies the page passed in. 
  *
@@ -82,32 +110,9 @@ void Page::parseChoice(const std::string & readIn) {
     exit(EXIT_FAILURE);
   }
   /* Parse content before the 1st colon as next page number. */
-  this->addNextPagesNum(this->parsePageNum(readIn.substr(0, colon)));
+  this->addNextPagesNum(parsePageNum(readIn.substr(0, colon)));
   /* Take the content after 1st colon as the choice. */
   this->addChoices(readIn.substr(colon + 1));
-}
-
-/* parseNextpage takes a string of nextPageNumber and return a number in size_t.
- * indicates and exits if any error occurs.
- * @param nextPageStr, a string of nextPageNumber
- */
-size_t Page::parsePageNum(const std::string & pageStr) {
-  if (pageStr.length() == 0) {
-    std::cerr << "Page number is not present." << std::endl;
-    exit(EXIT_FAILURE);
-  }
-  std::istringstream builder(pageStr);
-  size_t pageNum;
-  builder >> pageNum;
-  if (!builder.eof()) {
-    std::cerr << pageStr << " Cannot convert entirely to a size_t number." << std::endl;
-    exit(EXIT_FAILURE);
-  }
-  if (pageNum <= 0) {
-    std::cerr << "Next Page Number should be strictly greater than 0." << std::endl;
-    exit(EXIT_FAILURE);
-  }
-  return pageNum;
 }
 
 /* Adders/Setters: modify the field of a page object. */
@@ -122,7 +127,7 @@ void Page::setPageNum(const std::string & fileName) {
   size_t numStart = pagePos + 4;
   size_t numLen = dotPos - numStart;
   /* skip "page" and end brefore the dot */
-  this->pageNum = this->parsePageNum(fileName.substr(numStart, numLen));
+  this->pageNum = parsePageNum(fileName.substr(numStart, numLen));
 }
 
 /* Adders/Setters modify a specific feild of page object. */

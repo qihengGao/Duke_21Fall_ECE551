@@ -1,0 +1,9 @@
+#include "story.hpp"
+
+#include <sstream>
+
+#include "page.hpp"
+
+Story::Story(const std::string & directory) {
+  std::stringstream ss(directory);
+}
