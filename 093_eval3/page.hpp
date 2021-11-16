@@ -8,12 +8,14 @@
 /* Page Class */
 class Page {
  private:
+  /* Page number of this page. */
   size_t pageNum;
+
   /*  Stores every line of text in order in a vector. */
   std::vector<std::string> text;
 
-  /* Elements in nextPagesNum and choices have the one-to-one relationship
-   * i.e. nextPagesNum[i] : choices[i]
+  /* If the page is the normal choice navigation page, it contains the information
+   * of the next page number and their corresponding choices.
    */
   std::vector<size_t> nextPagesNum;
   std::vector<std::string> choices;
@@ -45,15 +47,16 @@ class Page {
   void setAsWin();
   void setAsLose();
 
-  size_t getPageNum();
-  std::vector<std::string> & getText();
-  std::vector<size_t> & getNextPagesNum();
-  std::vector<std::string> & getChoices();
-  bool isWin();
-  bool isLose();
+  size_t getPageNum() const;
+  const std::vector<std::string> & getText() const;
+  const std::vector<size_t> & getNextPagesNum() const;
+  const std::vector<std::string> & getChoices() const;
+  bool isWin() const;
+  bool isLose() const;
+  bool isChoicePage() const;
 
-  void printText();
-  void printChoices();
-  void printPage();
+  void printText() const;
+  void printChoices() const;
+  void printPage() const;
 };
 #endif

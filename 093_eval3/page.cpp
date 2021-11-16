@@ -63,7 +63,7 @@ void Page::parsePage(const std::string & fileName) {
     exit(EXIT_FAILURE);
   }
   /* Check if choice is present in normal navigation page. */
-  if (!this->isWinPage && !this->isLosePage && this->choices.empty()) {
+  if (this->isChoicePage() && this->choices.empty()) {
     std::cerr << "Contents miss in " << fileName << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -146,30 +146,37 @@ void Page::setAsLose() {
 }
 
 /* Getters: get the the field of a page object. */
-size_t Page::getPageNum() {
+size_t Page::getPageNum() const {
   return this->pageNum;
 }
-std::vector<std::string> & Page::getText() {
+const std::vector<std::string> & Page::getText() const {
   return this->text;
 }
 
-std::vector<size_t> & Page::getNextPagesNum() {
+const std::vector<size_t> & Page::getNextPagesNum() const {
   return this->nextPagesNum;
 }
 
-std::vector<std::string> & Page::getChoices() {
+const std::vector<std::string> & Page::getChoices() const {
   return this->choices;
 }
 
-bool Page::isWin() {
+bool Page::isWin() const {
   return this->isWinPage;
 }
 
-bool Page::isLose() {
+bool Page::isLose() const {
   return this->isLosePage;
 }
 
-void Page::printPage() {
+bool Page::isChoicePage() const {
+  return (!this->isWinPage && !this->isLosePage);
+}
+
+/* printPage print the required format of the page according to the type of page object,
+ * i.e. choice, WIN or LOSE.
+ */
+void Page::printPage() const {
   this->printText();
   std::cout << std::endl;
   /* WIN Page. */
@@ -185,15 +192,17 @@ void Page::printPage() {
   }
 }
 
-void Page::printText() {
-  std::vector<std::string> text = this->getText();
+/* printText prints the text stored in text vector line by line. */
+void Page::printText() const {
+  const std::vector<std::string> text = this->getText();
   for (size_t i = 0; i < text.size(); i++) {
     std::cout << text[i] << std::endl;
   }
 }
 
-void Page::printChoices() {
-  std::vector<std::string> choices = this->getChoices();
+/* printChoices prints the choices stored in the choices vector. */
+void Page::printChoices() const {
+  const std::vector<std::string> choices = this->getChoices();
   std::cout << "What would you like to do?" << std::endl;
   std::cout << std::endl;
   for (size_t i = 0; i < choices.size(); i++) {
