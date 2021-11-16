@@ -31,7 +31,7 @@ void Page::parsePage(const std::string & fileName) {
     /* Segmentation occurs, start processing text on the next line. */
     if (readIn.length() > 0 && readIn[0] == '#' && !processText) {
       /* Page is the ending page but separation does not occur at right position. */
-      if ((this->isWinPage || this->isLosePage) && lineNum != 2) {
+      if ((!this->isChoicePage()) && lineNum != 2) {
         std::cerr << "Segmentation does not occur right after the WIN/LOSE line."
                   << std::endl;
         exit(EXIT_FAILURE);
@@ -125,6 +125,7 @@ void Page::setPageNum(const std::string & fileName) {
   this->pageNum = this->parsePageNum(fileName.substr(numStart, numLen));
 }
 
+/* Adders/Setters modify a specific feild of page object. */
 void Page::addText(const std::string & text) {
   this->text.push_back(text);
 }
