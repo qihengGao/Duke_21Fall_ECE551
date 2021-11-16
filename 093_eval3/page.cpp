@@ -7,6 +7,7 @@
 #include <ostream>
 #include <sstream>
 
+/* Helper Function */
 /* parseNextpage takes a string of nextPageNumber and return a number in size_t.
  * indicates and exits if any error occurs.
  * @param nextPageStr, a string of nextPageNumber
@@ -16,7 +17,7 @@ size_t parsePageNum(const std::string & pageNumStr) {
     std::cerr << "Page number is not present." << std::endl;
     exit(EXIT_FAILURE);
   }
-  if (pageNumStr.find("-") != 0) {
+  if (pageNumStr.find("-") != std::string::npos) {
     std::cerr << "Contains negative sign." << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -186,11 +187,11 @@ void Page::printPage() const {
   this->printText();
   std::cout << std::endl;
   /* WIN Page. */
-  if (this->isWin()) {
+  if (this->isWinPage) {
     std::cout << "Congratulations! You have won. Hooray!" << std::endl;
   }
   /* Lose Page. */
-  else if (this->isLose()) {
+  else if (this->isLosePage) {
     std::cout << "Sorry, you have lost. Better luck next time!" << std::endl;
   }
   else {
