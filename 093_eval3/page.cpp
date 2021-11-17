@@ -12,7 +12,7 @@
  * indicates and exits if any error occurs.
  * @param nextPageStr, a string of nextPageNumber
  */
-size_t parsePageNum(const std::string & pageNumStr) {
+size_t Page::parsePageNum(const std::string & pageNumStr) {
   if (pageNumStr.length() == 0) {
     std::cerr << "Page number is not present." << std::endl;
     exit(EXIT_FAILURE);
@@ -58,7 +58,7 @@ void Page::parsePage(const std::string & fileName) {
   while (getline(file, readIn)) {
     ++lineNum;
     /* Segmentation occurs, start processing text on the next line. */
-    if (readIn.length() > 0 && readIn[0] == '#' && !processText) {
+    if (readIn[0] == '#' && !processText) {
       /* Page is the ending page but separation does not occur at right position. */
       if ((!this->isChoicePage()) && lineNum != 2) {
         std::cerr << "Segmentation does not occur right after the WIN/LOSE line."
@@ -201,18 +201,16 @@ void Page::printPage() const {
 
 /* printText prints the text stored in text vector line by line. */
 void Page::printText() const {
-  const std::vector<std::string> text = this->getText();
-  for (size_t i = 0; i < text.size(); i++) {
-    std::cout << text[i] << std::endl;
+  for (size_t i = 0; i < this->text.size(); i++) {
+    std::cout << this->text[i] << std::endl;
   }
 }
 
 /* printChoices prints the choices stored in the choices vector. */
 void Page::printChoices() const {
-  const std::vector<std::string> choices = this->getChoices();
   std::cout << "What would you like to do?" << std::endl;
   std::cout << std::endl;
-  for (size_t i = 0; i < choices.size(); i++) {
-    std::cout << " " << i + 1 << ". " << choices[i] << std::endl;
+  for (size_t i = 0; i < this->choices.size(); i++) {
+    std::cout << " " << i + 1 << ". " << this->choices[i] << std::endl;
   }
 }

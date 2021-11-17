@@ -40,7 +40,7 @@ class Page {
     this->parsePage(fileName);
   }
   ~Page() {}
-
+  static size_t parsePageNum(const std::string & pageNumSt);
   void setPageNum(const std::string & fileName);
   void addText(const std::string & text);
   void addNextPagesNum(const size_t pageNum);
