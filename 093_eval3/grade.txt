@@ -1,14 +1,13 @@
-Grading at 11/17/2021:01:33:07.495280
-For commit ID 068e1dcd37cb550faf83cf89fac9f56da5a04953
-Grading at Tue Nov 16 20:32:51 EST 2021
+Grading at 11/17/2021:05:25:15.428976
+For commit ID 860bec2d1551c3cc12e1599e4d58bbffdba5acd4
+Grading at Wed Nov 17 00:24:54 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
-rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o
-g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
 g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step1.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
 g++ -o cyoa-step1 cyoa-step1.o page.o
-rm cyoa-step1.o
 Compiled for step 1
 +-----------------------------------------------------------------------+
 Test case 1 (success): cyoa-step1 /usr/local/ece551/cyoa/story1/page1.txt
@@ -43,32 +42,60 @@ Your file matched the expected output
 Step 1: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step2
-rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o
-g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
 g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step2.cpp
-g++ -o cyoa-step2 cyoa-step2.o page.o
-Makefile:6: recipe for target 'cyoa-step2' failed
-rm cyoa-step2.o
-The code did not compile!
-Did not compile for step 2
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c story.cpp
+g++ -o cyoa-step2 cyoa-step2.o page.o story.o
+Compiled for step 2
+Input to story is
+1
+1
+1
+
++-----------------------------------------------------------------------+
+Test case 11 (success): cyoa-step2 /usr/local/ece551/cyoa/story1 < pregrader_input.txt
+Your file matched the expected output
+Input to story is
+3
+2
+
++-----------------------------------------------------------------------+
+Test case 12 (success): cyoa-step2 /usr/local/ece551/cyoa/story1 < pregrader_input.txt
+Your file matched the expected output
+Input to story is
+1
+2
+2
+1
+
++-----------------------------------------------------------------------+
+Test case 13 (success): cyoa-step2 /usr/local/ece551/cyoa/story2 < pregrader_input.txt
+Your file matched the expected output
+Input to story is
+3
+
++-----------------------------------------------------------------------+
+Test case 14 (success): cyoa-step2 /usr/local/ece551/cyoa/story2 < pregrader_input.txt
+Your file matched the expected output
+Step 2: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step3
-rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
 The code did not compile!
 Did not compile for step 3
 
 Compiling cyoa-step4
-rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
 The code did not compile!
 Did not compile for step 4
 Running your test cases
 
 Compiling cyoa-step1
-rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o
-g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
 g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step1.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
 g++ -o cyoa-step1 cyoa-step1.o page.o
-rm cyoa-step1.o
 +-----------------------------------------------------------------------+
 Test case 1 (error): cyoa-step1 ./story1/page82.txt
 Your program successfully indicated a failure case
