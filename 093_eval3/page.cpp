@@ -36,6 +36,17 @@ size_t Page::parsePageNum(const std::string & pageNumStr) {
   return pageNumber;
 }
 
+/* assignment operator. */
+Page & Page::operator=(const Page & rhs) {
+  this->pageNum = rhs.pageNum;
+  this->text = rhs.text;
+  this->nextPagesNum = rhs.nextPagesNum;
+  this->choices = rhs.choices;
+  this->isWinPage = rhs.isWinPage;
+  this->isLosePage = rhs.isLosePage;
+  return *this;
+}
+
 /* parsePage parses the text given in the file named 'fileName'
  * and modifies the page passed in. 
  *
@@ -156,6 +167,11 @@ void Page::setAsLose() {
 size_t Page::getPageNum() const {
   return this->pageNum;
 }
+
+size_t Page::choiceRange() const {
+  return this->choices.size();
+}
+
 const std::vector<std::string> & Page::getText() const {
   return this->text;
 }

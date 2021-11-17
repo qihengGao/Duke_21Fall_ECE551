@@ -84,8 +84,10 @@ void Story::checkPageConnect() const {
     /* Get the list of the next page number for the current page i. */
     const std::vector<size_t> nextPagesOfCurr = this->pages[i].getNextPagesNum();
     /* Iterate the list of the next page number to set reachable status as true.  */
-    for (size_t j = 0; j < nextPagesOfCurr.size(); j++) {
-      referenced[j - 1] = true;  // 0-based
+    for (std::vector<size_t>::const_iterator it = nextPagesOfCurr.begin();
+         it != nextPagesOfCurr.end();
+         ++it) {
+      referenced[*it - 1] = true;  // 0-based
     }
   }
 
@@ -129,7 +131,43 @@ void Story::check() const {
   this->checkHasWinLose();
 }
 
+/* Helper function. To check if user input is in range. */
+bool userChoiceInRange(size_t userChoice, size_t choiceRange) {
+  return userChoice > 0 && userChoice <= choiceRange;
+}
+
 void Story::start() const {
   /* Starts from page 1. */
-  size_t nextPage = 1;
+  size_t nextPageNum = 1;
+  Page nextPage = this->pages[nextPageNum - 1];
+
+  /* Start adventrue. */
+  while (nextPage.isChoicePage()) {
+    nextPage.printPage();
+    /* Get the choice range of current page for further unser input check. */
+    size_t choiceRange = nextPage.choiceRange();
+    size_t userChoice = 0;
+    // bool waitInput = true;
+    std::string readIn;
+    /* Get user input until user input is valid. */
+    while (getline(std::cin, readIn)) {
+      // std::cin >> userChoice;
+      std::stringstream builder(readIn);
+      builder >> userChoice;
+      if (!builder.eof() || !userChoiceInRange(userChoice, choiceRange)) {
+        std::cerr << "That is not a valid choice, please try again" << std::endl;
+        std::cin.clear();
+      }
+      else {
+        break;
+      }
+    }
+
+    /* Jump to the next page based on user choice. */
+    nextPageNum = nextPage.getNextPagesNum()[userChoice - 1];
+    nextPage = this->pages[nextPageNum - 1];
+  }
+
+  /* Print Ending. */
+  nextPage.printPage();
 }

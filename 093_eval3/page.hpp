@@ -39,6 +39,7 @@ class Page {
       isLosePage(false) {
     this->parsePage(fileName);
   }
+  Page & operator=(const Page & rhs);
   ~Page() {}
   static size_t parsePageNum(const std::string & pageNumSt);
   void setPageNum(const std::string & fileName);
@@ -49,6 +50,7 @@ class Page {
   void setAsLose();
 
   size_t getPageNum() const;
+  size_t choiceRange() const;
   const std::vector<std::string> & getText() const;
   const std::vector<size_t> & getNextPagesNum() const;
   const std::vector<std::string> & getChoices() const;
