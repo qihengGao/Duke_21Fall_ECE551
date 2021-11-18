@@ -6,6 +6,7 @@
 #include <ostream>
 #include <queue>
 #include <sstream>
+#include <stack>
 
 #include "page.hpp"
 /* Helper Functions*/
@@ -173,6 +174,7 @@ void Story::start() const {
   nextPage.printPage();
 }
 
+/* Step3 print the depth of pages. */
 void Story::printPagesDepth() const {
   std::vector<bool> visited(this->pages.size(), false);
   std::vector<size_t> depths(this->pages.size(), 0);
@@ -185,6 +187,25 @@ void Story::printPagesDepth() const {
     else {
       std::cout << ":" << depths[i - 1] << std::endl;
     }
+  }
+}
+
+void Story::showPathToWin() const {
+  std::vector<bool> visited(this->pages.size(), false);
+  std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > result;
+  search2(this->pages[0], visited, result);
+  if (result.empty()) {
+    std::cout << "This story is unwinnable!" << std::endl;
+    return;
+  }
+  for (size_t i = 0; i < result.size(); i++) {
+    std::vector<Page> pathToWin = result[i].first;
+    std::vector<size_t> choicesToWin = result[i].second;
+    for (size_t j = 0; j < choicesToWin.size(); j++) {
+      std::cout << pathToWin[j].getPageNum() << "(" << choicesToWin[j] << ")"
+                << ",";
+    }
+    std::cout << pathToWin[pathToWin.size() - 1].getPageNum() << "(win)" << std::endl;
   }
 }
 
@@ -202,12 +223,54 @@ void Story::search(const Page & start,
       depths[currPage.getPageNum() - 1] = depth;
       visited[currPage.getPageNum() - 1] = true;
       std::vector<size_t> nextPagesNum = currPage.getNextPagesNum();
-      for (size_t c = 0; c < currPage.choiceRange(); c++) {
-        if (!visited[nextPagesNum[c] - 1]) {
-          queue.push(this->pages[nextPagesNum[c] - 1]);
+      for (size_t c = 1; c <= currPage.choiceRange(); c++) {
+        if (!visited[nextPagesNum[c - 1] - 1]) {
+          queue.push(this->pages[nextPagesNum[c - 1] - 1]);
         }
       }
     }
     depth++;
+  }
+}
+
+void Story::search2(
+    const Page & start,
+    std::vector<bool> & visited,
+    std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > & result) const {
+  std::vector<Page> path;
+  std::vector<size_t> choice;
+  path.push_back(start);
+  std::stack<std::vector<Page> > stack;
+  std::stack<std::vector<bool> > visitedStatus;
+  std::stack<std::vector<size_t> > choices;
+  stack.push(path);
+  visitedStatus.push(visited);
+  choices.push(choice);
+
+  while (!stack.empty()) {
+    std::vector<Page> currPath = stack.top();
+    std::vector<bool> currVisited = visitedStatus.top();
+    std::vector<size_t> currChoice = choices.top();
+    stack.pop();
+    visitedStatus.pop();
+    choices.pop();
+    Page currPage = currPath.back();
+    if (currPage.isWin()) {
+      result.push_back(
+          std::pair<std::vector<Page>, std::vector<size_t> >(currPath, currChoice));
+    }
+    currVisited[currPage.getPageNum() - 1] = true;
+    std::vector<size_t> nextPagesNum = currPage.getNextPagesNum();
+    for (size_t c = 1; c <= currPage.choiceRange(); c++) {
+      if (!currVisited[nextPagesNum[c - 1] - 1]) {
+        currPath.push_back(this->pages[nextPagesNum[c - 1] - 1]);
+        currChoice.push_back(c);
+        stack.push(currPath);
+        visitedStatus.push(currVisited);
+        choices.push(currChoice);
+        currPath.pop_back();
+        currChoice.pop_back();
+      }
+    }
   }
 }

@@ -20,6 +20,11 @@ class Story {
               std::vector<bool> & visited,
               std::vector<size_t> & depths) const;
 
+  void search2(
+      const Page & start,
+      std::vector<bool> & visited,
+      std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > & result) const;
+
  public:
   Story() {}
   explicit Story(const std::string & directory);
@@ -31,7 +36,7 @@ class Story {
   void start() const;
 
   void printPagesDepth() const;
-  // void showPathToWin() const;
+  void showPathToWin() const;
 };
 
 #endif
