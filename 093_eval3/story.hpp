@@ -16,6 +16,9 @@ class Story {
   void checkPageConnect() const;
   /* Check the story has both win and lose pages. */
   void checkHasWinLose() const;
+  void search(const Page & start,
+              std::vector<bool> & visited,
+              std::vector<size_t> & depths) const;
 
  public:
   Story() {}
@@ -26,6 +29,9 @@ class Story {
   void check() const;
   /* Start the adventrue. */
   void start() const;
+
+  void printPagesDepth() const;
+  // void showPathToWin() const;
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <ostream>
+#include <queue>
 #include <sstream>
 
 #include "page.hpp"
@@ -170,4 +171,43 @@ void Story::start() const {
 
   /* Print Ending. */
   nextPage.printPage();
+}
+
+void Story::printPagesDepth() const {
+  std::vector<bool> visited(this->pages.size(), false);
+  std::vector<size_t> depths(this->pages.size(), 0);
+  search(this->pages[0], visited, depths);
+  for (size_t i = 1; i <= this->pages.size(); i++) {
+    std::cout << "Page " << i;
+    if (!visited[i - 1]) {
+      std::cout << " is not reachable" << std::endl;
+    }
+    else {
+      std::cout << ":" << depths[i - 1] << std::endl;
+    }
+  }
+}
+
+void Story::search(const Page & start,
+                   std::vector<bool> & visited,
+                   std::vector<size_t> & depths) const {
+  std::queue<Page> queue;
+  queue.push(start);
+  size_t depth = 0;
+  while (!queue.empty()) {
+    size_t size = queue.size();
+    for (size_t i = 0; i < size; i++) {
+      Page currPage = queue.front();
+      queue.pop();
+      depths[currPage.getPageNum() - 1] = depth;
+      visited[currPage.getPageNum() - 1] = true;
+      std::vector<size_t> nextPagesNum = currPage.getNextPagesNum();
+      for (size_t c = 0; c < currPage.choiceRange(); c++) {
+        if (!visited[nextPagesNum[c] - 1]) {
+          queue.push(this->pages[nextPagesNum[c] - 1]);
+        }
+      }
+    }
+    depth++;
+  }
 }

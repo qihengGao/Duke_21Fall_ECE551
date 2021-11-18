@@ -6,6 +6,8 @@ cyoa-step1: cyoa-step1.o page.o
 	g++ -o $@ $^
 cyoa-step2: cyoa-step2.o page.o story.o
 	g++ -o $@ $^
+cyoa-step3: cyoa-step3.o page.o story.o
+	g++ -o $@ $^
 %.o: %.cpp
 	g++ $(CPPFLAGS) -c $<
 
