@@ -1,6 +1,6 @@
-Grading at 11/17/2021:05:25:15.428976
-For commit ID 860bec2d1551c3cc12e1599e4d58bbffdba5acd4
-Grading at Wed Nov 17 00:24:54 EST 2021
+Grading at 11/18/2021:19:01:29.906504
+For commit ID c1bc309e33dd76b67e91975b3043683babac37ac
+Grading at Thu Nov 18 14:01:07 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -82,8 +82,17 @@ Step 2: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step3
 rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
-The code did not compile!
-Did not compile for step 3
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step3.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c story.cpp
+g++ -o cyoa-step3 cyoa-step3.o page.o story.o
++-----------------------------------------------------------------------+
+Test case 15 (success): cyoa-step3 /usr/local/ece551/cyoa/story1
+Your file matched the expected output
++-----------------------------------------------------------------------+
+Test case 16 (success): cyoa-step3 /usr/local/ece551/cyoa/story2
+Your file matched the expected output
+Step 3: PASSED Pre-Grader Test Cases
 
 Compiling cyoa-step4
 rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
