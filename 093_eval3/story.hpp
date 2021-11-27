@@ -16,11 +16,11 @@ class Story {
   void checkPageConnect() const;
   /* Check the story has both win and lose pages. */
   void checkHasWinLose() const;
-  void search(const Page & start,
-              std::vector<bool> & visited,
-              std::vector<size_t> & depths) const;
+  void countDepths(const Page & start,
+                   std::vector<bool> & visited,
+                   std::vector<size_t> & depths) const;
 
-  void search2(
+  void collectPaths(
       const Page & start,
       std::vector<bool> & visited,
       std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > & result) const;

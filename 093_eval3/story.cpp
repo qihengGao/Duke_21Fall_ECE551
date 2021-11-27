@@ -178,7 +178,7 @@ void Story::start() const {
 void Story::printPagesDepth() const {
   std::vector<bool> visited(this->pages.size(), false);
   std::vector<size_t> depths(this->pages.size(), 0);
-  search(this->pages[0], visited, depths);
+  countDepths(this->pages[0], visited, depths);
   for (size_t i = 1; i <= this->pages.size(); i++) {
     std::cout << "Page " << i;
     if (!visited[i - 1]) {
@@ -193,7 +193,7 @@ void Story::printPagesDepth() const {
 void Story::showPathToWin() const {
   std::vector<bool> visited(this->pages.size(), false);
   std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > result;
-  search2(this->pages[0], visited, result);
+  collectPaths(this->pages[0], visited, result);
   if (result.empty()) {
     std::cout << "This story is unwinnable!" << std::endl;
     return;
@@ -209,9 +209,9 @@ void Story::showPathToWin() const {
   }
 }
 
-void Story::search(const Page & start,
-                   std::vector<bool> & visited,
-                   std::vector<size_t> & depths) const {
+void Story::countDepths(const Page & start,
+                        std::vector<bool> & visited,
+                        std::vector<size_t> & depths) const {
   std::queue<Page> queue;
   queue.push(start);
   size_t depth = 0;
@@ -233,7 +233,7 @@ void Story::search(const Page & start,
   }
 }
 
-void Story::search2(
+void Story::collectPaths(
     const Page & start,
     std::vector<bool> & visited,
     std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > & result) const {
