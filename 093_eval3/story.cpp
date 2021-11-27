@@ -174,9 +174,11 @@ void Story::start() const {
   nextPage.printPage();
 }
 
-/* Step3 print the depth of pages. */
+/* Step3 print the depths of pages. */
 void Story::printPagesDepth() const {
+  /* Initialize visited vector to circumvent duplicated visiting. */
   std::vector<bool> visited(this->pages.size(), false);
+  /* To store the depth information of each page starting from page1. */
   std::vector<size_t> depths(this->pages.size(), 0);
   countDepths(this->pages[0], visited, depths);
   for (size_t i = 1; i <= this->pages.size(); i++) {
@@ -190,14 +192,18 @@ void Story::printPagesDepth() const {
   }
 }
 
+/* Step 4 get all possible paths to win. */
 void Story::showPathToWin() const {
   std::vector<bool> visited(this->pages.size(), false);
+  /* Store the path to win and its corresponding choices. */
   std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > result;
   collectPaths(this->pages[0], visited, result);
+  /* No path to win. */
   if (result.empty()) {
     std::cout << "This story is unwinnable!" << std::endl;
     return;
   }
+  /* Print pages before the win. */
   for (size_t i = 0; i < result.size(); i++) {
     std::vector<Page> pathToWin = result[i].first;
     std::vector<size_t> choicesToWin = result[i].second;
@@ -205,18 +211,25 @@ void Story::showPathToWin() const {
       std::cout << pathToWin[j].getPageNum() << "(" << choicesToWin[j] << ")"
                 << ",";
     }
+    /* Print win. */
     std::cout << pathToWin[pathToWin.size() - 1].getPageNum() << "(win)" << std::endl;
   }
 }
 
+/* Carry out breadth-first-search to traverse the page level by level
+ * to get the depths.
+ */
 void Story::countDepths(const Page & start,
                         std::vector<bool> & visited,
                         std::vector<size_t> & depths) const {
   std::queue<Page> queue;
+  /* Push the start to the queue. */
   queue.push(start);
+  /* Starting with 0 depth. */
   size_t depth = 0;
   while (!queue.empty()) {
     size_t size = queue.size();
+    /* Pages in the same level are in the same depth. */
     for (size_t i = 0; i < size; i++) {
       Page currPage = queue.front();
       queue.pop();
@@ -233,15 +246,24 @@ void Story::countDepths(const Page & start,
   }
 }
 
+/* Carry out depth first search to collect the paths to win by implementing stack. */
 void Story::collectPaths(
     const Page & start,
     std::vector<bool> & visited,
     std::vector<std::pair<std::vector<Page>, std::vector<size_t> > > & result) const {
+  /* Record the path during the process. */
   std::vector<Page> path;
+
+  /* Record the choices during the process. */
   std::vector<size_t> choice;
   path.push_back(start);
+
   std::stack<std::vector<Page> > stack;
+
+  /* Record the corresponding visited status for each. */
   std::stack<std::vector<bool> > visitedStatus;
+
+  /* Record the corresponding choice status for each. */
   std::stack<std::vector<size_t> > choices;
   stack.push(path);
   visitedStatus.push(visited);
@@ -255,10 +277,12 @@ void Story::collectPaths(
     visitedStatus.pop();
     choices.pop();
     Page currPage = currPath.back();
+    /* If current page is win, add to result. */
     if (currPage.isWin()) {
       result.push_back(
           std::pair<std::vector<Page>, std::vector<size_t> >(currPath, currChoice));
     }
+    /* If haven't get to the win, update visired status and continue traversing. */
     currVisited[currPage.getPageNum() - 1] = true;
     std::vector<size_t> nextPagesNum = currPage.getNextPagesNum();
     for (size_t c = 1; c <= currPage.choiceRange(); c++) {
