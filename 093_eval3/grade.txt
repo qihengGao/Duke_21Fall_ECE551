@@ -1,6 +1,6 @@
-Grading at 11/28/2021:21:15:41.855807
-For commit ID a49d8e5ad998834d4c86095336c8b40afd51ac4a
-Grading at Sun Nov 28 16:15:13 EST 2021
+Grading at 11/28/2021:21:22:59.350302
+For commit ID 09d8e5474cddb574fe69c89e3ff60a21317d0d01
+Grading at Sun Nov 28 16:22:26 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -117,17 +117,33 @@ g++ -o cyoa-step1 cyoa-step1.o page.o
 +-----------------------------------------------------------------------+
 Test case 1 (error): cyoa-step1 ./story1/page82.txt
 Your program successfully indicated a failure case
+
+Compiling cyoa-step2
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step2.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c story.cpp
+g++ -o cyoa-step2 cyoa-step2.o page.o story.o
 +-----------------------------------------------------------------------+
-Test case 2 (success): cyoa-step1 ./story1/page1.txt
+Test case 2 (error): cyoa-step2 story3
+Your program successfully indicated a failure case
+
+Compiling cyoa-step1
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step1.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+g++ -o cyoa-step1 cyoa-step1.o page.o
++-----------------------------------------------------------------------+
+Test case 3 (success): cyoa-step1 ./story1/page1.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 3 (success): cyoa-step1 ./story1/page81.txt
+Test case 4 (success): cyoa-step1 ./story1/page81.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 4 (success): cyoa-step1 ./story1/page83.txt
+Test case 5 (success): cyoa-step1 ./story1/page83.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 5 (success): cyoa-step1 ./story1/page84.txt
+Test case 6 (success): cyoa-step1 ./story1/page84.txt
 Your file matched the expected output
 
 You have PASSED all of your test cases
