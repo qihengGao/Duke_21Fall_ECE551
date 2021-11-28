@@ -1,5 +1,6 @@
 #error
 cyoa-step1 ./story1/page82.txt
+cyoa-step2 story3
 
 #success
 cyoa-step1 ./story1/page1.txt
