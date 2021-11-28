@@ -129,14 +129,14 @@ void Page::parseChoice(const std::string & readIn) {
 
 /* Adders/Setters: modify the field of a page object. */
 void Page::setPageNum(const std::string & fileName) {
-  size_t pagePos = fileName.find_last_of("page");
+  size_t pagePos = fileName.find("/page");
   size_t dotPos = fileName.find(".txt");
   /* If fileName is not matched. */
   if (pagePos == std::string::npos || dotPos == std::string::npos) {
     std::cerr << fileName << " does not match the format: page__.txt" << std::endl;
     exit(EXIT_FAILURE);
   }
-  size_t numStart = pagePos + 1;
+  size_t numStart = pagePos + 4;
   size_t numLen = dotPos - numStart;
   /* skip "page" and end brefore the dot */
   this->pageNum = parsePageNum(fileName.substr(numStart, numLen));
