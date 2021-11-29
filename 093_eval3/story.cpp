@@ -1,5 +1,7 @@
 #include "story.hpp"
 
+#include <dirent.h>
+
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -29,9 +31,10 @@ void generateFileName(std::stringstream & filePath,
  * @param filePath
  * @return a boolean to indicate if the the file can be openned, i.e. exists
  */
-bool fileIsExist(const std::string & filePath) {
+bool fileIsValid(const std::string & filePath) {
   std::ifstream file(filePath.c_str());
-  return file.good();
+  /* Path exists and it is a file. */
+  return file.good() && (opendir(filePath.c_str()) == NULL);
 }
 
 /* Story constructor. */
@@ -40,7 +43,7 @@ Story::Story(const std::string & directory) {
   size_t pageNumber = 1;
   generateFileName(filePath, directory, pageNumber);
   /* While the file in the path can be openned. */
-  while (fileIsExist(filePath.str())) {
+  while (fileIsValid(filePath.str())) {
     this->addPage(Page(filePath.str()));
     this->pageNumberSet.insert(pageNumber);
     /* Increse page number and generate next file path. */
@@ -96,7 +99,7 @@ void Story::checkPageConnect() const {
   /* Skip page 1, check if the rest is referenced. */
   for (size_t i = 1; i < referenced.size(); i++) {
     if (!referenced[i]) {
-      std::cerr << "page" << i << "is not refereced." << std::endl;
+      std::cerr << "page " << i + 1 << " is not refereced." << std::endl;
       exit(EXIT_FAILURE);
     }
   }
