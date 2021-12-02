@@ -27,7 +27,7 @@ void generateFileName(std::stringstream & filePath,
   filePath << directory << "/page" << pageNumber << ".txt";
 }
 
-/* isFileExist checks if the file given in the filePath really exists.
+/* fileIsValid checks if the file given in the filePath really exists.
  * @param filePath
  * @return a boolean to indicate if the the file can be openned, i.e. exists
  */

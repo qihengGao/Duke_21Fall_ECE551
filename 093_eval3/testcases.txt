@@ -2,6 +2,7 @@
 cyoa-step1 ./story1/page82.txt
 cyoa-step2 story3
 cyoa-step2 pageNotRef
+cyoa-step3 noPageOne
 
 #success
 cyoa-step1 ./story1/page1.txt
