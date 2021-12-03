@@ -1,6 +1,6 @@
-Grading at 12/02/2021:21:49:17.471319
-For commit ID e16ef22463ad5b2c19887cb3c520c99f53d319d8
-Grading at Thu Dec  2 16:48:38 EST 2021
+Grading at 12/03/2021:18:50:29.090441
+For commit ID 666e7e3456d2e9953ab1349b183a6b5f0c8cc127
+Grading at Fri Dec  3 13:49:46 EST 2021
 Checking Step 1 test cases required for extra credit
 
 Compiling cyoa-step1
@@ -141,22 +141,32 @@ g++ -o cyoa-step3 cyoa-step3.o page.o story.o
 Test case 4 (error): cyoa-step3 noPageOne
 Your program successfully indicated a failure case
 
+Compiling cyoa-step4
+rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step4.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c story.cpp
+g++ -o cyoa-step4 cyoa-step4.o page.o story.o
++-----------------------------------------------------------------------+
+Test case 5 (error): cyoa-step4 noToWin
+Our cyoa-step4 does not consider this an error case
+
 Compiling cyoa-step1
 rm -f *~ cyoa-step1 cyoa-step2 cyoa-step3 cyoa-step4 cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o page.o story.o
 g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c cyoa-step1.cpp
 g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
 g++ -o cyoa-step1 cyoa-step1.o page.o
 +-----------------------------------------------------------------------+
-Test case 5 (success): cyoa-step1 ./story1/page1.txt
+Test case 6 (success): cyoa-step1 ./story1/page1.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 6 (success): cyoa-step1 ./story1/page81.txt
+Test case 7 (success): cyoa-step1 ./story1/page81.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 7 (success): cyoa-step1 ./story1/page83.txt
+Test case 8 (success): cyoa-step1 ./story1/page83.txt
 Your file matched the expected output
 +-----------------------------------------------------------------------+
-Test case 8 (success): cyoa-step1 ./story1/page84.txt
+Test case 9 (success): cyoa-step1 ./story1/page84.txt
 Your file matched the expected output
 
 Compiling cyoa-step3
@@ -166,10 +176,10 @@ g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c page.cpp
 g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -c story.cpp
 g++ -o cyoa-step3 cyoa-step3.o page.o story.o
 +-----------------------------------------------------------------------+
-Test case 9 (success): cyoa-step3 notReach
+Test case 10 (success): cyoa-step3 notReach
 Your file matched the expected output
 
-You have PASSED all of your test cases
-Keep adding test cases until you are satisfied your program is correct
+You have FAILED one or more of your test cases
+Keep debugging
 
 Overall Grade: NO GRADE YET
