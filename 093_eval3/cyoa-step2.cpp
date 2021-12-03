@@ -14,6 +14,7 @@ int main(int argc, char ** argv) {
   Story story(directory);
   /* Check choices page are in range, all pages are referenced, and the story has both WIN and LOSE page. */
   story.check();
+  /* Start adventure if all requirement match. */
   story.start();
   return EXIT_SUCCESS;
 }

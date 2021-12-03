@@ -31,6 +31,7 @@ class Page {
   void parseChoice(const std::string & readIn);
 
  public:
+  /* Default constructor. */
   Page() : pageNum(-1), isWinPage(false), isLosePage(false) {}
 
   explicit Page(const std::string & fileName) :
@@ -39,8 +40,12 @@ class Page {
       isLosePage(false) {
     this->parsePage(fileName);
   }
+  /* Assignment. */
   Page & operator=(const Page & rhs);
+  /* Destructor. */
   ~Page() {}
+
+  /* Setters. */
   static size_t parsePageNum(const std::string & pageNumSt);
   void setPageNum(const std::string & fileName);
   void addText(const std::string & text);
@@ -49,6 +54,7 @@ class Page {
   void setAsWin();
   void setAsLose();
 
+  /* Getters. */
   size_t getPageNum() const;
   size_t choiceRange() const;
   const std::vector<std::string> & getText() const;

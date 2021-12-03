@@ -3,7 +3,6 @@ cyoa-step1 ./story1/page82.txt
 cyoa-step2 story3
 cyoa-step2 pageNotRef
 cyoa-step3 noPageOne
-cyoa-step4 noToWin
 
 #success
 cyoa-step1 ./story1/page1.txt
@@ -11,3 +10,4 @@ cyoa-step1 ./story1/page81.txt
 cyoa-step1 ./story1/page83.txt
 cyoa-step1 ./story1/page84.txt
 cyoa-step3 notReach
+cyoa-step4 noToWin
