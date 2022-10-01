@@ -31,15 +31,22 @@ void find_key(FILE * f) {
   count_freq(charToFreq, f);
   // idx = the relative position to char 'a'
   int maxFreqIdx = get_max_index(charToFreq);
-  if (maxFreqIdx >= 4) {
-    printf("%d\n", maxFreqIdx - 4);
-    return;
+  /* if (maxFreqIdx >= 4) { */
+  /*   printf("%d\n", maxFreqIdx - 4); */
+  /*   return; */
+  /* } */
+  /* // ('e' + key) % 26  - 'a' = index; */
+  /* // key % 26 + ('e' - 'a') = index; */
+  /* // key % 26 = index - 4; */
+  /* // key = index - 4 + 26; // +22 */
+  /* printf("%d\n", maxFreqIdx + 22); */
+  int offset = 0;
+  for (; offset < 26; ++offset) {
+    if ((4 + offset) % 26 == maxFreqIdx) {
+      printf("%d\n", offset);
+    }
   }
-  // ('e' + key) % 26  - 'a' = index;
-  // key % 26 + ('e' - 'a') = index;
-  // key % 26 = index - 4;
-  // key = index - 4 + 26; // +22
-  printf("%d\n", maxFreqIdx + 22);
+  printf("%d\n", 0);
 }
 
 void count_freq(int * charToFreq, FILE * f) {
